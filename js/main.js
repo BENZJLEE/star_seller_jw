@@ -53,7 +53,14 @@
 
     var promos = CFG.promotions || [];
     var box = $("#promoBox");
-    if (promos.length) {
+    var PK = window.PriceKit;
+    if (PK && PK.data.items.length) {
+      box.innerHTML = '<p class="promo__label">' + esc(PK.data.month) + " PROMOTION</p>" +
+        '<ul class="promo__extras">' + (PK.data.extras || []).map(function (x) {
+          return "<li><b>" + esc(x.title) + "</b><span>" + esc(x.desc) + "</span></li>";
+        }).join("") + "</ul>" +
+        '<a href="price.html" class="btn btn--light">' + esc(PK.data.month) + " 전체 차종 가격표 보기</a>";
+    } else if (promos.length) {
       box.innerHTML = '<p class="promo__label">THIS MONTH</p>' + promos.map(function (p) {
         return '<div class="promo__item"><p class="promo__month">' + esc(p.month) + "</p><h3>" + esc(p.title) + "</h3>" +
           (p.desc ? "<p>" + esc(p.desc) + "</p>" : "") + "</div>";
@@ -425,7 +432,8 @@
     if (opt.modelId) $("#f-model").value = opt.modelId;
     if (opt.message) {
       var msg = $("#f-msg");
-      msg.value = opt.message + (msg.value && msg.value.indexOf("[나에게 맞는") !== 0 ? "\n\n" + msg.value : "");
+      // 자동 입력된 내용([...]로 시작)은 교체하고, 고객이 직접 쓴 내용은 뒤에 남김
+      msg.value = opt.message + (msg.value && msg.value.charAt(0) !== "[" ? "\n\n" + msg.value : "");
     }
     var target = $("#contact");
     target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -544,6 +552,99 @@
   }
 
   /* ------------------------------------------------------------------
+     7-1. 이달의 구매 조건 카드 + 가격표에서 넘어온 견적 자동 입력
+     ------------------------------------------------------------------ */
+  function initDeals() {
+    var PK = window.PriceKit;
+    if (!PK) return;
+    var deals = PK.featured();
+    if (deals.length) {
+      $("#deals").hidden = false;
+      $("#dealsEyebrow").textContent = PK.data.month.replace(/^(\d+)년 (\d+)월$/, "$1 · $2월") + " BEST";
+      $("#dealsTitle").textContent = PK.data.month.replace(/^\d+년 /, "") + " 구매 조건";
+      $("#dealsNote").textContent = "※ " + PK.data.period + " 기준 · 권장소비자가격(" + PK.data.priceListDate +
+        " 가격표, 부가세 포함)에서 할인을 적용한 금액입니다. 벤츠파이낸셜 할인은 해당 금융 상품 이용 시 적용되며 금융 심사 결과에 따라 달라질 수 있습니다. 옵션 · 재고 · 등록 비용에 따라 실제 구매 금액은 달라질 수 있으며 조건은 사전 고지 없이 변경 · 종료될 수 있습니다.";
+      $("#dealTrack").innerHTML = deals.map(function (c) {
+        var it = c.item;
+        return '<article class="deal">' +
+          '<div class="deal__top"><span class="deal__my">' + esc(it.my) + "</span>" +
+          (it.badge ? '<span class="deal__badge">' + esc(it.badge) + "</span>" : "") + "</div>" +
+          '<h3 class="deal__name">' + esc(it.name) + "</h3>" +
+          '<p class="deal__off">' + PK.won(c.discount) + " 할인</p>" +
+          '<dl class="deal__nums">' +
+          "<div><dt>차량가</dt><dd><s>" + PK.won(c.msrp) + "</s></dd></div>" +
+          '<div><dt>최종가</dt><dd class="deal__final">' + PK.won(c.final) + "</dd></div>" +
+          "</dl>" +
+          '<p class="deal__rate">' + esc(PK.rateText(it)) + (it.mbf ? '<span>' + esc(it.mbfNote || "벤츠파이낸셜 이용 시") + "</span>" : "") + "</p>" +
+          (it.free ? '<p class="deal__tag">' + esc(it.free) + " 할부 가능</p>" : "") +
+          '<button type="button" class="btn btn--dark btn--block" data-quote="' + esc(c.key) + '">이 조건으로 견적 받기</button>' +
+          "</article>";
+      }).join("");
+      $("#dealTrack").addEventListener("click", function (e) {
+        var b = e.target.closest("[data-quote]");
+        if (b) quote(b.getAttribute("data-quote"));
+      });
+    }
+
+    // price.html 에서 ?quote=모델 로 넘어온 경우
+    var q = null;
+    try { q = new URLSearchParams(location.search).get("quote"); } catch (err) { q = null; }
+    if (q) setTimeout(function () { quote(q); }, 300);
+
+    function quote(k) {
+      var c = PK.find(k);
+      if (!c) return;
+      goContact({ modelId: c.item.guide, message: PK.quoteMessage(c) });
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     7-2. 제휴 법인 검색
+     ------------------------------------------------------------------ */
+  var ABBR = [["엔에이치엔", "nhn"], ["에이치디씨", "hdc"], ["비엔케이", "bnk"], ["에스케이", "sk"], ["씨제이", "cj"], ["지에스", "gs"], ["케이티", "kt"],
+    ["엔에이치", "nh"], ["에이치디", "hd"], ["에이치에스", "hs"], ["엘에스", "ls"], ["엘엑스", "lx"], ["엘지", "lg"], ["케이비", "kb"], ["엔씨", "nc"], ["에스디에스", "sds"]];
+  function normCo(s) {
+    s = String(s || "").toLowerCase().replace(/\(주\)|㈜|주식회사|유한회사|유한책임회사|\(유\)|\s|\.|·/g, "");
+    ABBR.forEach(function (p) { s = s.split(p[0]).join(p[1]); });
+    return s;
+  }
+
+  function initMou() {
+    var M = window.MOU;
+    if (!M || !M.list || !M.list.length) return;
+    $("#mou").hidden = false;
+    var list = M.list.map(function (row) {
+      var parts = row.split("|");
+      return { name: parts[0], parent: parts[1] || "", n: normCo(parts[0]), p: normCo(parts[1] || "") };
+    });
+    $("#mouCount").textContent = M.updated + " 기준 " + list.length + "개 법인 · 전문직 협회";
+    var input = $("#mouQ"), out = $("#mouResult");
+    var ask = '<a href="#contact" class="mou__ask">상담으로 확인하기 →</a>';
+
+    input.addEventListener("input", function () {
+      var q = normCo(input.value);
+      if (q.length < 2) { out.innerHTML = ""; return; }
+      var hits = list.filter(function (c) { return c.n.indexOf(q) > -1 || (c.p && c.p.indexOf(q) > -1); });
+      if (!hits.length) {
+        out.innerHTML = '<div class="mou__none"><b>목록에서 찾지 못했습니다.</b><p>법인명이 다르게 등록되어 있거나 최근 체결된 회사일 수 있습니다. 회사명을 알려주시면 직접 확인해 드립니다.</p>' + ask + "</div>";
+        return;
+      }
+      var pro = hits.some(function (c) { return c.parent === "전문직"; });
+      out.innerHTML = '<div class="mou__ok"><b>제휴 법인 ' + hits.length + "곳이 확인됩니다.</b>" +
+        "<ul>" + hits.slice(0, 8).map(function (c) {
+          return "<li>" + esc(c.name) + (c.parent && c.parent !== "전문직" ? " <small>" + esc(c.parent) + "</small>" : "") + "</li>";
+        }).join("") + (hits.length > 8 ? "<li class=\"mou__more\">외 " + (hits.length - 8) + "곳</li>" : "") + "</ul>" +
+        "<p>" + esc(pro ? M.proBenefit : M.benefit) + "</p>" + ask + "</div>";
+    });
+    out.addEventListener("click", function (e) {
+      if (!e.target.closest(".mou__ask")) return;
+      var msg = $("#f-msg");
+      var t = "[임직원 혜택 문의] 재직 회사: " + input.value.trim();
+      if (msg.value.indexOf("[임직원 혜택 문의]") !== 0) msg.value = t + (msg.value ? "\n\n" + msg.value : "");
+    });
+  }
+
+  /* ------------------------------------------------------------------
      8. FAQ 아코디언
      ------------------------------------------------------------------ */
   function initFaq() {
@@ -576,6 +677,8 @@
   initModels();
   initFinder();
   initForm();
+  initDeals();
+  initMou();
   initFaq();
   initReveal();
 })();

@@ -40,6 +40,8 @@
       <span class="logo__line" data-cfg="brandLine">Mercedes-Benz Personal Guide</span>
     </a>
     <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="#deals">이달의 조건</a>
+      <a href="price.html">가격표</a>
       <a href="#about">소개</a>
       <a href="#models">차량 가이드</a>
       <a href="#finder">나에게 맞는 벤츠</a>
@@ -63,12 +65,45 @@
     <h1 class="hero__title">당신의 다음 벤츠,<br>함께 고민하겠습니다.</h1>
     <p class="hero__sub">고객님의 일상과 취향에 맞는 메르세데스-벤츠.<br>차량 선택부터 출고까지, <span data-cfg="name">이진우</span>가 함께하겠습니다.</p>
     <div class="hero__actions">
-      <a href="#finder" class="btn btn--light">나에게 맞는 차량 찾기</a>
-      <a href="#contact" class="btn btn--outline-light">이진우에게 상담하기</a>
+      <a href="#deals" class="btn btn--light">이달의 구매 조건 보기</a>
+      <a href="#finder" class="btn btn--outline-light">나에게 맞는 차량 찾기</a>
     </div>
     <p class="hero__role" data-role-line>메르세데스-벤츠 세일즈 컨설턴트 이진우</p>
   </div>
   <div class="hero__car" aria-hidden="true" data-shape="sedan" data-variant="hero"></div>
+</section>
+
+<!-- ================= THIS MONTH (js/pricing.js) ================= -->
+<section class="section deals" id="deals" hidden>
+  <div class="container">
+    <div class="deals__head reveal">
+      <div>
+        <p class="eyebrow" id="dealsEyebrow">THIS MONTH</p>
+        <h2 class="section__title" id="dealsTitle">이달의 구매 조건</h2>
+        <p class="section__desc">권장소비자가격 기준 할인과 최종가를 한눈에 확인하세요.</p>
+      </div>
+      <a href="price.html" class="deals__all">전체 차종 가격표 보기 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="deal-track" id="dealTrack"></div>
+    <p class="note" id="dealsNote"></p>
+  </div>
+</section>
+
+<!-- ================= MOU 제휴사 검색 (js/mou.js) ================= -->
+<section class="section mou" id="mou" hidden>
+  <div class="container mou__grid">
+    <div class="reveal">
+      <p class="eyebrow eyebrow--light">CORPORATE BENEFIT</p>
+      <h2 class="section__title">우리 회사,<br>벤츠 제휴사일까?</h2>
+      <p class="section__desc">회사 이름을 검색해 보세요. 제휴 법인 임직원이시면 추가 혜택을 받으실 수 있습니다.</p>
+      <p class="mou__count" id="mouCount"></p>
+    </div>
+    <div class="mou__panel reveal">
+      <label for="mouQ" class="sr-only">회사명 검색</label>
+      <input type="search" id="mouQ" class="mou__input" placeholder="회사명 입력 (예: 삼성전자, 네이버, LG화학)" autocomplete="off">
+      <div class="mou__result" id="mouResult" aria-live="polite"></div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= 02 ABOUT ================= -->
@@ -402,6 +437,9 @@
 
 <script src="js/config.js"></script>
 <script src="js/models.js"></script>
+<script src="js/pricing.js"></script>
+<script src="js/prices.js"></script>
+<script src="js/mou.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

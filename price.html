@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>전 차종 가격표 · 이달의 할인 | 이진우 Mercedes-Benz Personal Guide</title>
+  <meta name="description" content="메르세데스-벤츠 전 차종 권장소비자가격과 이달의 할인, 최종가. 원하는 조건으로 바로 견적 상담을 신청하세요.">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="canonical" href="https://benzjlee.github.io/star_seller_jw/price.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="메르세데스-벤츠 전 차종 가격표 · 이달의 할인">
+  <meta property="og:description" content="권장소비자가격, 할인 금액, 최종가를 한눈에 확인하세요.">
+  <meta property="og:url" content="https://benzjlee.github.io/star_seller_jw/price.html">
+  <meta property="og:image" content="https://benzjlee.github.io/star_seller_jw/assets/og-image.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-sub">
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="header is-scrolled" id="header">
+  <div class="container header__inner">
+    <a href="./" class="logo" aria-label="JINWOO LEE 홈으로">
+      <span class="logo__name">JINWOO LEE</span>
+      <span class="logo__line">Mercedes-Benz Personal Guide</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="./#deals">이달의 조건</a>
+      <a href="price.html" class="is-current">가격표</a>
+      <a href="./#models">차량 가이드</a>
+      <a href="./#finder">나에게 맞는 벤츠</a>
+      <a href="./#faq">FAQ</a>
+      <a href="./#contact" class="nav__cta">상담 신청</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="price-hero">
+    <div class="container">
+      <p class="eyebrow eyebrow--light">PRICE LIST</p>
+      <h1 class="price-hero__title"><span id="phMonth">이달의</span> 전 차종 가격표</h1>
+      <p class="price-hero__sub">권장소비자가격, 할인 금액, 최종가를 한눈에 확인하고 원하는 조건으로 바로 견적을 받아보세요.</p>
+    </div>
+  </section>
+
+  <section class="section price">
+    <div class="container">
+      <div class="price-tools">
+        <div class="filters" id="clsTabs" role="group" aria-label="차종 구분"></div>
+        <div class="price-tools__row">
+          <label class="search">
+            <span class="sr-only">모델 검색</span>
+            <input type="search" id="q" placeholder="모델명 검색 (예: E 200, GLC)" autocomplete="off">
+          </label>
+          <label class="check check--small"><input type="checkbox" id="onlyDeal"> <span>할인 차종만</span></label>
+        </div>
+      </div>
+
+      <div class="ptable" role="table" aria-label="가격표">
+        <div class="ptable__head" role="row">
+          <span role="columnheader">모델</span>
+          <span role="columnheader">차량가</span>
+          <span role="columnheader">할인</span>
+          <span role="columnheader">최종가</span>
+          <span role="columnheader"><span class="sr-only">견적</span></span>
+        </div>
+        <div id="rows"></div>
+      </div>
+      <p class="ptable__empty" id="empty" hidden>조건에 맞는 차량이 없습니다.</p>
+
+      <p class="note" id="priceNote"></p>
+    </div>
+  </section>
+
+  <section class="section purchase">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow eyebrow--light">EXTRA BENEFITS</p>
+        <h2 class="section__title">추가로 받을 수 있는 혜택</h2>
+        <p class="section__desc" style="color:rgba(255,255,255,.7)">고객님 상황에 따라 위 최종가에서 추가 할인 · 혜택이 적용될 수 있습니다. 해당 여부는 상담 시 확인해 드립니다.</p>
+      </div>
+      <ul class="promo__extras" id="extras"></ul>
+      <div class="price-cta">
+        <a href="./#contact" class="btn btn--light">상담 신청하기</a>
+        <a data-kakao href="https://open.kakao.com/o/sWytrfVi" target="_blank" rel="noopener" class="btn btn--outline-light">카카오톡 상담</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <p class="footer__name serif">JINWOO LEE</p>
+      <p class="footer__line">Mercedes-Benz Personal Guide</p>
+    </div>
+    <div class="footer__links">
+      <a data-tel href="tel:01063969342">전화 <span data-phone>010-6396-9342</span></a>
+      <a data-kakao href="https://open.kakao.com/o/sWytrfVi" target="_blank" rel="noopener">카카오톡 상담</a>
+      <a href="privacy.html">개인정보 처리방침</a>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>본 사이트는 세일즈 컨설턴트 개인이 운영하는 상담 안내 페이지이며, 메르세데스-벤츠 코리아의 공식 홈페이지가 아닙니다. 가격과 구매 조건은 시기 및 계약 조건에 따라 달라질 수 있습니다.</p>
+    <p>© 2026 Jinwoo Lee. All rights reserved.</p>
+  </div>
+</footer>
+
+<nav class="quickbar" aria-label="빠른 상담">
+  <a data-kakao href="https://open.kakao.com/o/sWytrfVi" target="_blank" rel="noopener" class="quickbar__kakao">카카오톡 상담</a>
+  <a data-tel href="tel:01063969342">전화 상담</a>
+  <a href="./#contact" class="quickbar__main">상담 신청</a>
+</nav>
+
+<script src="js/config.js"></script>
+<script src="js/pricing.js"></script>
+<script src="js/prices.js"></script>
+<script>
+(function () {
+  "use strict";
+  var CFG = window.SITE_CONFIG || {}, PK = window.PriceKit, P = PK.data;
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+
+  // 연락처
+  if (CFG.phone) {
+    document.querySelectorAll("[data-tel]").forEach(function (a) { a.href = "tel:" + CFG.phone.replace(/[^0-9+]/g, ""); });
+    document.querySelectorAll("[data-phone]").forEach(function (s) { s.textContent = CFG.phone; });
+  }
+  if (CFG.kakao) document.querySelectorAll("[data-kakao]").forEach(function (a) { a.href = CFG.kakao; });
+
+  // 모바일 메뉴
+  var btn = $("#menuBtn"), nav = $("#nav"), header = $("#header");
+  btn.addEventListener("click", function () {
+    var open = btn.getAttribute("aria-expanded") !== "true";
+    nav.classList.toggle("is-open", open); header.classList.toggle("menu-open", open);
+    btn.setAttribute("aria-expanded", String(open)); document.body.style.overflow = open ? "hidden" : "";
+  });
+
+  $("#phMonth").textContent = P.month;
+  document.title = P.month + " 전 차종 가격표 · 이달의 할인 | 이진우 Mercedes-Benz Personal Guide";
+  $("#priceNote").textContent = "※ " + P.period + " 기준 · 권장소비자가격은 " + P.priceListDate +
+    " 메르세데스-벤츠 코리아 가격표(부가세 포함, 개별소비세 5%) 기준입니다. '벤츠파이낸셜' 할인은 해당 금융 상품 이용 시 적용되며 금융 심사 결과에 따라 달라질 수 있습니다. 무이자 할부의 선수금 조건은 모델별로 다릅니다. 옵션 · 재고 · 등록 비용에 따라 실제 구매 금액은 달라질 수 있고, 조건은 재고 소진 시 또는 사전 고지 없이 변경 · 종료될 수 있습니다.";
+  $("#extras").innerHTML = (P.extras || []).map(function (x) {
+    return "<li><b>" + esc(x.title) + "</b><span>" + esc(x.desc) + "</span></li>";
+  }).join("");
+
+  var all = PK.all();
+  var state = { cls: "all", q: "", onlyDeal: false };
+
+  var tabs = ["all"].concat(P.CLASSES);
+  $("#clsTabs").innerHTML = tabs.map(function (c, i) {
+    return '<button type="button" class="filter' + (i ? "" : " is-active") + '" data-cls="' + esc(c) + '" aria-pressed="' + (i ? "false" : "true") + '">' + (c === "all" ? "전체" : esc(c)) + "</button>";
+  }).join("");
+  $("#clsTabs").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cls]"); if (!b) return;
+    document.querySelectorAll("#clsTabs .filter").forEach(function (x) { var on = x === b; x.classList.toggle("is-active", on); x.setAttribute("aria-pressed", String(on)); });
+    state.cls = b.getAttribute("data-cls"); render();
+  });
+  $("#q").addEventListener("input", function (e) { state.q = e.target.value.trim().toLowerCase().replace(/\s+/g, ""); render(); });
+  $("#onlyDeal").addEventListener("change", function (e) { state.onlyDeal = e.target.checked; render(); });
+
+  function row(c) {
+    var it = c.item;
+    var href = "./?quote=" + encodeURIComponent(c.key) + "#contact";
+    return '<div class="prow" role="row">' +
+      '<div class="prow__model" role="cell"><span class="prow__my">' + esc(it.my) + "</span>" +
+      (it.badge ? '<span class="deal__badge">' + esc(it.badge) + "</span>" : "") +
+      '<b>' + esc(it.name) + "</b>" +
+      (it.free ? '<span class="prow__tag">' + esc(it.free) + "</span>" : "") +
+      (it.note ? '<span class="prow__note">' + esc(it.note) + "</span>" : "") + "</div>" +
+      '<div class="prow__msrp" role="cell"><em>차량가</em>' + (c.hasDiscount ? "<s>" + PK.won(c.msrp) + "</s>" : PK.won(c.msrp)) + "</div>" +
+      '<div class="prow__off" role="cell"><em>할인</em>' + (c.hasDiscount ? "<b>" + PK.won(c.discount) + "</b><small>" + esc(PK.rateText(it)) + "</small>" : '<small>상담 시 안내</small>') + "</div>" +
+      '<div class="prow__final" role="cell"><em>최종가</em>' + (c.hasDiscount ? "<b>" + PK.won(c.final) + "</b>" + (it.mbf ? "<small>" + esc(it.mbfNote || "벤츠파이낸셜 이용 시") + "</small>" : "") : "<b>" + PK.won(c.msrp) + "</b>") + "</div>" +
+      '<div class="prow__cta" role="cell"><a class="btn btn--outline" href="' + href + '">견적 받기</a></div>' +
+      "</div>";
+  }
+
+  function render() {
+    var list = all.filter(function (c) {
+      var it = c.item;
+      if (state.cls !== "all" && it.cls !== state.cls) return false;
+      if (state.onlyDeal && !c.hasDiscount) return false;
+      if (state.q && (it.name + it.my).toLowerCase().replace(/\s+/g, "").indexOf(state.q) === -1) return false;
+      return true;
+    });
+    var html = "", last = null;
+    list.forEach(function (c) {
+      if (c.item.cls !== last) { html += '<h2 class="ptable__group">' + esc(c.item.cls) + "</h2>"; last = c.item.cls; }
+      html += row(c);
+    });
+    $("#rows").innerHTML = html;
+    $("#empty").hidden = list.length > 0;
+  }
+  render();
+})();
+</script>
+</body>
+</html>
