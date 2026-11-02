@@ -206,6 +206,9 @@ ul, ol { list-style: none; }
 }
 .deal { background: var(--white); border: 1px solid var(--line); padding: 26px 24px 24px; display: flex; flex-direction: column; transition: border-color .25s, box-shadow .25s; }
 .deal:hover { border-color: var(--ink); box-shadow: 0 18px 40px -26px rgba(0,0,0,.35); }
+.deal__photo { margin: -26px -24px 20px; aspect-ratio: 16 / 9; overflow: hidden; background: var(--paper); }
+.deal__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.deal:hover .deal__photo img { transform: scale(1.03); }
 .deal__top { display: flex; gap: 8px; align-items: center; min-height: 24px; }
 .deal__my { font-size: 11px; letter-spacing: .14em; color: var(--muted); border: 1px solid var(--line); padding: 2px 8px; }
 .deal__badge { font-size: 11px; font-weight: 500; color: var(--white); background: var(--accent); padding: 3px 9px; }
@@ -341,7 +344,28 @@ ul, ol { list-style: none; }
 .card:hover { border-color: var(--line); box-shadow: 0 18px 40px -24px rgba(0,0,0,.25); transform: translateY(-2px); }
 @keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .card__visual { aspect-ratio: 16 / 9; background: linear-gradient(180deg, #fafafa, #ececea); display: grid; place-items: center; padding: 8% 6% 4%; overflow: hidden; }
-.card__visual img { width: 100%; height: 100%; object-fit: cover; }
+.card__visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.card__visual.is-photo, .modal__visual.is-photo { padding: 0; }
+.card:hover .card__visual.is-photo img { transform: scale(1.03); }
+.modal__visual.is-photo { aspect-ratio: 16 / 9; }
+.result__visual img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* hero photo */
+.hero--photo .hero__car { display: none; }
+.hero--photo .hero__bg {
+  background:
+    linear-gradient(90deg, rgba(10,10,11,.92) 0%, rgba(10,10,11,.7) 38%, rgba(10,10,11,.15) 75%, rgba(10,10,11,.05) 100%),
+    linear-gradient(0deg, rgba(10,10,11,.85) 0%, rgba(10,10,11,0) 35%),
+    url("../assets/images/hero-s-class.jpg") 70% 60% / cover no-repeat, var(--black);
+}
+.hero--photo .hero__bg::after { display: none; }
+@media (max-width: 860px) {
+  .hero--photo .hero__bg {
+    background:
+      linear-gradient(0deg, rgba(10,10,11,.95) 0%, rgba(10,10,11,.72) 45%, rgba(10,10,11,.3) 100%),
+      url("../assets/images/hero-s-class.jpg") 20% 50% / cover no-repeat, var(--black);
+  }
+}
 .card__body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .card__cat { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
 .card__name { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1.2; margin: 6px 0 10px; }

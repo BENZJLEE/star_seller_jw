@@ -200,7 +200,7 @@
     var list = MODELS.filter(function (m) { return filter === "all" || m.category === filter; });
     $("#modelGrid").innerHTML = list.map(function (m, i) {
       return '<article class="card" style="animation-delay:' + (i * 50) + 'ms">' +
-        '<div class="card__visual">' + visualHTML(m, true) + "</div>" +
+        '<div class="card__visual' + (m.image ? ' is-photo' : '') + '">' + visualHTML(m, true) + "</div>" +
         '<div class="card__body">' +
         '<p class="card__cat">' + CATEGORY_LABEL[m.category] + "</p>" +
         '<h3 class="card__name">' + esc(m.name) + "</h3>" +
@@ -247,6 +247,7 @@
       current = m;
       lastFocus = trigger;
       $("#modalVisual").innerHTML = visualHTML(m, true);
+      $("#modalVisual").classList.toggle("is-photo", !!m.image);
       $("#modalCat").textContent = CATEGORY_LABEL[m.category];
       $("#modalTitle").textContent = m.name;
       $("#modalTagline").textContent = m.tagline;
@@ -566,7 +567,9 @@
         " 가격표, 부가세 포함)에서 할인을 적용한 금액입니다. 벤츠파이낸셜 할인은 해당 금융 상품 이용 시 적용되며 금융 심사 결과에 따라 달라질 수 있습니다. 옵션 · 재고 · 등록 비용에 따라 실제 구매 금액은 달라질 수 있으며 조건은 사전 고지 없이 변경 · 종료될 수 있습니다.";
       $("#dealTrack").innerHTML = deals.map(function (c) {
         var it = c.item;
+        var gm = it.guide && findModel(it.guide);
         return '<article class="deal">' +
+          (gm && gm.image ? '<div class="deal__photo"><img src="' + esc(gm.image) + '" alt="' + esc(gm.name) + '" loading="lazy" width="1200" height="675"></div>' : "") +
           '<div class="deal__top"><span class="deal__my">' + esc(it.my) + "</span>" +
           (it.badge ? '<span class="deal__badge">' + esc(it.badge) + "</span>" : "") + "</div>" +
           '<h3 class="deal__name">' + esc(it.name) + "</h3>" +

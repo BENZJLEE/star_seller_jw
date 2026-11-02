@@ -79,7 +79,7 @@ window.PRICING = {
     { my: "MY26", cls: "E-Class", name: "E 350 e 4MATIC EXCLUSIVE", msrp: 100000000, cash: 14, guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "E 450 4MATIC AMG Line", msrp: 116000000, cash: 11, guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "E 450 4MATIC EXCLUSIVE", msrp: 129600000, cash: 11, guide: "e-class" },
-    { my: "MY26", cls: "E-Class", name: "Mercedes-AMG E 53 HYBRID 4MATIC+", msrp: 148400000, cash: 10, free: "24/36개월 무이자", guide: "e-class" },
+    { my: "MY26", cls: "E-Class", name: "Mercedes-AMG E 53 HYBRID 4MATIC+", msrp: 148400000, cash: 10, free: "24/36개월 무이자", guide: "amg-e" },
     { my: "MY27", cls: "E-Class", name: "E 200 EXCLUSIVE", msrp: 77500000, cash: 14, mbf: 4, free: "24개월 무이자", badge: "11월 무이자 신설", guide: "e-class" },
     { my: "MY27", cls: "E-Class", name: "E 200 AMG Line", msrp: 81000000, cash: 14, mbf: 3, free: "24개월 무이자", badge: "11월 무이자 신설", guide: "e-class" },
     { my: "MY27", cls: "E-Class", name: "E 300 4MATIC EXCLUSIVE", msrp: 94800000, cash: 8, mbf: 4, guide: "e-class" },
