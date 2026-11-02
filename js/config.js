@@ -35,7 +35,7 @@ window.SITE_CONFIG = {
      1) https://formspree.io 가입 → New Form 생성
      2) 발급된 주소 https://formspree.io/f/xxxxabcd 에서 마지막 "xxxxabcd" 만 아래에 입력
      비워두면 온라인 접수는 꺼지고, 전화·카카오톡 안내만 표시됩니다. */
-  formspreeId: "",
+  formspreeId: "xvkkvqao",
 
   /* ---------- SNS ----------
      주소를 넣은 항목만 화면에 표시됩니다. */
