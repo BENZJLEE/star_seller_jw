@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김OO | 메르세데스-벤츠 세일즈 컨설턴트</title>
+<meta name="description" content="메르세데스-벤츠 신차 구매 상담, 견적, 시승 예약. 김OO 세일즈 컨설턴트가 끝까지 책임집니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== 여기만 바꾸면 전체 색상이 바뀝니다 ===== */
+  :root {
+    --bg: #0b0c0e;
+    --bg-2: #131518;
+    --card: #181b1f;
+    --line: #2a2e34;
+    --text: #e9ebee;
+    --muted: #9aa1aa;
+    --silver: #c9ced6;
+    --accent: #00adef;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: "Noto Sans KR", system-ui, sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  .serif { font-family: "Playfair Display", serif; }
+
+  /* Header */
+  header { position: fixed; inset: 0 0 auto 0; z-index: 50; background: rgba(11,12,14,.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { display: flex; flex-direction: column; line-height: 1.2; }
+  .brand b { font-family: "Playfair Display", serif; font-size: 20px; letter-spacing: .5px; }
+  .brand span { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .menu { display: flex; gap: 28px; font-size: 14px; color: var(--silver); }
+  .menu a:hover { color: #fff; }
+  .nav-cta { border: 1px solid var(--silver); padding: 8px 18px; font-size: 13px; letter-spacing: 1px; }
+  .nav-cta:hover { background: var(--silver); color: var(--bg); }
+  @media (max-width: 820px) { .menu { display: none; } }
+
+  /* Hero */
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, #2b3038 0%, var(--bg) 70%); }
+  .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 18%; height: 1px; background: linear-gradient(90deg, transparent, var(--silver), transparent); opacity: .35; }
+  .hero-inner { position: relative; z-index: 2; padding-top: 68px; }
+  .eyebrow { font-size: 12px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; }
+  .hero h1 { font-family: "Playfair Display", "Noto Sans KR", serif; font-weight: 500; font-size: clamp(36px, 6vw, 68px); line-height: 1.2; }
+  .hero p { color: var(--muted); max-width: 520px; margin: 22px 0 36px; font-size: 17px; }
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 14px 30px; font-size: 14px; letter-spacing: 1px; transition: .2s; }
+  .btn-primary { background: #fff; color: #000; }
+  .btn-primary:hover { background: var(--silver); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--silver); }
+  .car-svg { position: absolute; right: -60px; bottom: 16%; width: min(760px, 70vw); opacity: .9; z-index: 1; }
+  @media (max-width: 820px) { .car-svg { opacity: .25; right: -120px; width: 120vw; } }
+
+  /* Sections */
+  section { padding: 110px 0; }
+  .sec-head { margin-bottom: 56px; }
+  .sec-head .eyebrow { margin-bottom: 10px; }
+  .sec-head h2 { font-family: "Playfair Display", "Noto Sans KR", serif; font-weight: 500; font-size: clamp(28px, 4vw, 42px); }
+  .alt { background: var(--bg-2); }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: center; }
+  .portrait { aspect-ratio: 4/5; background: linear-gradient(160deg, #2a2f36, #121417); border: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); font-size: 13px; position: relative; }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .about h3 { font-size: 26px; font-weight: 500; margin-bottom: 6px; }
+  .about .role { color: var(--accent); font-size: 14px; letter-spacing: 1px; margin-bottom: 24px; }
+  .about p { color: var(--muted); margin-bottom: 16px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 32px; }
+  .stat { background: var(--bg); padding: 22px; text-align: center; }
+  .stat b { display: block; font-family: "Playfair Display", serif; font-size: 32px; font-weight: 500; }
+  .stat span { font-size: 12px; color: var(--muted); }
+  @media (max-width: 820px) { .about { grid-template-columns: 1fr; gap: 36px; } .portrait { max-width: 320px; } }
+
+  /* Lineup */
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+  .tab { background: none; border: 1px solid var(--line); color: var(--muted); padding: 8px 18px; font: inherit; font-size: 13px; cursor: pointer; }
+  .tab.on, .tab:hover { border-color: var(--silver); color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .model { background: var(--card); border: 1px solid var(--line); padding: 28px 24px; transition: .25s; }
+  .model:hover { border-color: var(--silver); transform: translateY(-3px); }
+  .model .type { font-size: 11px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+  .model h4 { font-family: "Playfair Display", serif; font-size: 26px; font-weight: 500; margin: 6px 0 10px; }
+  .model p { font-size: 14px; color: var(--muted); min-height: 48px; }
+  .model a { display: inline-block; margin-top: 18px; font-size: 13px; color: var(--silver); border-bottom: 1px solid var(--line); }
+  .model a:hover { color: #fff; border-color: #fff; }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .svc { background: var(--bg); padding: 36px 28px; }
+  .svc .num { font-family: "Playfair Display", serif; color: var(--accent); font-size: 14px; }
+  .svc h4 { font-size: 18px; font-weight: 500; margin: 12px 0 10px; }
+  .svc p { font-size: 14px; color: var(--muted); }
+
+  /* Process */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; counter-reset: s; }
+  .step { border-top: 1px solid var(--silver); padding-top: 18px; }
+  .step::before { counter-increment: s; content: "STEP 0" counter(s); font-size: 11px; letter-spacing: 2px; color: var(--accent); }
+  .step h4 { font-size: 17px; font-weight: 500; margin: 8px 0 6px; }
+  .step p { font-size: 14px; color: var(--muted); }
+
+  /* Reviews */
+  .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .review { background: var(--card); border: 1px solid var(--line); padding: 28px; }
+  .review .stars { color: var(--silver); letter-spacing: 3px; font-size: 13px; }
+  .review p { margin: 14px 0 18px; font-size: 15px; }
+  .review span { font-size: 13px; color: var(--muted); }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; }
+  .info li { list-style: none; padding: 18px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
+  .info li span { color: var(--muted); font-size: 13px; }
+  .quick { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+  form { display: grid; gap: 14px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  label { font-size: 12px; color: var(--muted); letter-spacing: 1px; display: block; margin-bottom: 6px; }
+  input, select, textarea { width: 100%; background: var(--card); border: 1px solid var(--line); color: var(--text); padding: 13px 14px; font: inherit; font-size: 15px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--silver); }
+  textarea { min-height: 110px; resize: vertical; }
+  .agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--muted); }
+  .agree input { width: auto; margin-top: 4px; }
+  @media (max-width: 820px) { .contact { grid-template-columns: 1fr; } .row { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 100px; font-size: 12px; color: var(--muted); }
+  footer p + p { margin-top: 6px; }
+
+  /* Floating call (mobile) */
+  .float { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: flex; flex-direction: column; gap: 10px; }
+  .float a { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+  .f-call { background: #fff; color: #000; }
+  .f-kakao { background: #fee500; color: #191919; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s, transform .8s; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand"><b>김OO</b><span>Mercedes-Benz Sales Consultant</span></a>
+    <nav class="menu">
+      <a href="#about">소개</a>
+      <a href="#lineup">차량 라인업</a>
+      <a href="#service">서비스</a>
+      <a href="#reviews">고객 후기</a>
+      <a href="#contact">상담 신청</a>
+    </nav>
+    <a href="#contact" class="nav-cta">견적 문의</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <svg class="car-svg" viewBox="0 0 800 260" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a616b"/><stop offset=".55" stop-color="#23272d"/><stop offset="1" stop-color="#0e1013"/></linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1a1e24"/><stop offset="1" stop-color="#3a414b"/></linearGradient>
+    </defs>
+    <ellipse cx="400" cy="232" rx="370" ry="14" fill="#000" opacity=".6"/>
+    <path d="M40 190 C40 160 70 148 120 142 L230 128 C280 88 340 66 430 64 C520 62 580 84 640 124 L720 136 C760 142 772 162 770 190 L766 204 L40 204 Z" fill="url(#body)" stroke="#8a919b" stroke-width="1"/>
+    <path d="M255 128 C300 92 350 78 425 76 C495 75 545 92 600 126 Z" fill="url(#glass)" stroke="#6b727c" stroke-width="1"/>
+    <line x1="430" y1="76" x2="436" y2="127" stroke="#6b727c"/>
+    <path d="M60 168 L750 160" stroke="#c9ced6" stroke-opacity=".35"/>
+    <rect x="732" y="152" width="30" height="7" rx="3" fill="#cfe9ff" opacity=".8"/>
+    <rect x="44" y="160" width="26" height="6" rx="3" fill="#ff3b3b" opacity=".7"/>
+    <circle cx="190" cy="204" r="40" fill="#0a0b0d" stroke="#5a616b" stroke-width="2"/><circle cx="190" cy="204" r="24" fill="none" stroke="#9aa1aa" stroke-width="3"/>
+    <circle cx="620" cy="204" r="40" fill="#0a0b0d" stroke="#5a616b" stroke-width="2"/><circle cx="620" cy="204" r="24" fill="none" stroke="#9aa1aa" stroke-width="3"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Mercedes-Benz Sales Consultant</div>
+    <h1>당신의 첫 번째 벤츠,<br>마지막까지 함께합니다.</h1>
+    <p>신차 견적부터 시승, 출고, 사후 관리까지.<br>투명한 견적과 빠른 응대로 고객님의 시간을 아껴드립니다.</p>
+    <div class="btns">
+      <a href="#contact" class="btn btn-primary">무료 견적 받기</a>
+      <a href="tel:010-0000-0000" class="btn btn-ghost">010-0000-0000</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about reveal">
+    <div class="portrait">
+      <!-- 프로필 사진: profile.jpg 파일을 같은 폴더에 올리면 자동 표시 -->
+      <img src="profile.jpg" alt="김OO 세일즈 컨설턴트" onerror="this.remove()">
+      프로필 사진
+    </div>
+    <div>
+      <div class="eyebrow">About</div>
+      <h3>김OO</h3>
+      <div class="role">OO모터스 OO전시장 · 세일즈 컨설턴트</div>
+      <p>안녕하세요. 메르세데스-벤츠 공식 딜러 OO모터스의 세일즈 컨설턴트 김OO입니다.</p>
+      <p>차를 파는 것보다 고객님께 꼭 맞는 차를 찾아드리는 일이 더 중요하다고 믿습니다. 구매 조건, 금융·리스 비교, 법인 구매, 보험까지 한 번에 정리해 드리고, 출고 후에도 정비 예약과 소모품 교체 시기를 직접 챙겨드립니다.</p>
+      <div class="stats">
+        <div class="stat"><b>0년</b><span>경력</span></div>
+        <div class="stat"><b>000+</b><span>누적 출고</span></div>
+        <div class="stat"><b>24h</b><span>상담 응대</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINEUP -->
+<section id="lineup" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Lineup</div>
+      <h2>차량 라인업</h2>
+    </div>
+    <div class="tabs reveal" id="tabs">
+      <button class="tab on" data-f="all">전체</button>
+      <button class="tab" data-f="sedan">세단</button>
+      <button class="tab" data-f="suv">SUV</button>
+      <button class="tab" data-f="ev">전기차</button>
+      <button class="tab" data-f="amg">AMG</button>
+    </div>
+    <div class="grid" id="models"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Service</div>
+      <h2>김OO만의 약속</h2>
+    </div>
+    <div class="services reveal">
+      <div class="svc"><div class="num">01</div><h4>투명한 견적</h4><p>숨은 비용 없이 차량가, 옵션, 등록비, 보험까지 한 장으로 정리해 드립니다.</p></div>
+      <div class="svc"><div class="num">02</div><h4>금융 · 리스 비교</h4><p>할부, 운용리스, 금융리스, 렌트를 고객님 상황에 맞춰 비교 설계해 드립니다.</p></div>
+      <div class="svc"><div class="num">03</div><h4>법인 · 개인사업자</h4><p>비용 처리, 법인 차량 운용 방식까지 꼼꼼하게 상담해 드립니다.</p></div>
+      <div class="svc"><div class="num">04</div><h4>출고 후 케어</h4><p>정비 예약, 소모품 교체 알림, 사고 시 연결까지 끝까지 챙깁니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Process</div>
+      <h2>구매 절차</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h4>상담 신청</h4><p>전화, 카카오톡, 아래 양식 중 편한 방법으로 연락 주세요.</p></div>
+      <div class="step"><h4>맞춤 견적</h4><p>예산과 용도에 맞는 모델과 구매 조건을 제안드립니다.</p></div>
+      <div class="step"><h4>시승</h4><p>원하시는 일정과 장소에 맞춰 시승을 준비합니다.</p></div>
+      <div class="step"><h4>계약 · 출고</h4><p>계약부터 등록, 출고 당일 차량 설명까지 함께합니다.</p></div>
+      <div class="step"><h4>사후 관리</h4><p>출고 후에도 언제든 편하게 연락 주세요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS: 실제 고객 후기로 교체하세요 -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Reviews</div>
+      <h2>고객 후기</h2>
+    </div>
+    <div class="reviews reveal">
+      <div class="review"><div class="stars">★★★★★</div><p>[실제 고객 후기를 입력하세요]</p><span>고객명 · 구매 모델</span></div>
+      <div class="review"><div class="stars">★★★★★</div><p>[실제 고객 후기를 입력하세요]</p><span>고객명 · 구매 모델</span></div>
+      <div class="review"><div class="stars">★★★★★</div><p>[실제 고객 후기를 입력하세요]</p><span>고객명 · 구매 모델</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="alt">
+  <div class="wrap contact">
+    <div class="reveal">
+      <div class="sec-head" style="margin-bottom:28px">
+        <div class="eyebrow">Contact</div>
+        <h2>상담 신청</h2>
+      </div>
+      <ul class="info">
+        <li><span>전화</span><a href="tel:010-0000-0000">010-0000-0000</a></li>
+        <li><span>이메일</span><a href="mailto:your@email.com">your@email.com</a></li>
+        <li><span>전시장</span>OO모터스 OO전시장</li>
+        <li><span>주소</span>서울시 OO구 OO로 000</li>
+        <li><span>운영시간</span>평일 09:00 – 19:00 / 주말 예약 상담</li>
+      </ul>
+      <div class="quick">
+        <a href="tel:010-0000-0000" class="btn btn-primary">전화 상담</a>
+        <a href="https://open.kakao.com/" target="_blank" rel="noopener" class="btn btn-ghost">카카오톡 상담</a>
+      </div>
+    </div>
+    <form id="form" class="reveal">
+      <div class="row">
+        <div><label for="name">성함</label><input id="name" required></div>
+        <div><label for="phone">연락처</label><input id="phone" type="tel" required placeholder="010-"></div>
+      </div>
+      <div class="row">
+        <div><label for="model">관심 차종</label><select id="model"><option>미정 / 추천 원함</option></select></div>
+        <div><label for="type">구매 방식</label>
+          <select id="type"><option>미정</option><option>일시불</option><option>할부</option><option>리스</option><option>렌트</option><option>법인 구매</option></select></div>
+      </div>
+      <div><label for="msg">문의 내용</label><textarea id="msg" placeholder="예산, 희망 출고 시기, 시승 희망 여부 등을 남겨주세요."></textarea></div>
+      <label class="agree"><input type="checkbox" required> 상담을 위한 개인정보(성함, 연락처) 수집 및 이용에 동의합니다.</label>
+      <button class="btn btn-primary" style="border:0;cursor:pointer;font:inherit">상담 신청하기</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>김OO · OO모터스 OO전시장 세일즈 컨설턴트 · 010-0000-0000</p>
+    <p>본 페이지는 세일즈 컨설턴트 개인이 운영하는 상담 안내 페이지이며, 차량 가격 및 프로모션은 시기와 조건에 따라 달라질 수 있습니다.</p>
+  </div>
+</footer>
+
+<div class="float">
+  <a href="https://open.kakao.com/" target="_blank" rel="noopener" class="f-kakao" aria-label="카카오톡 상담">TALK</a>
+  <a href="tel:010-0000-0000" class="f-call" aria-label="전화 상담">CALL</a>
+</div>
+
+<script>
+  // ===== 상담 문의 받을 이메일 =====
+  const EMAIL = "your@email.com";
+
+  // ===== 차량 라인업 (자유롭게 추가/삭제) =====
+  const MODELS = [
+    { name: "A-Class",  type: "sedan", label: "Compact Sedan", desc: "도심에 꼭 맞는 엔트리 세단." },
+    { name: "C-Class",  type: "sedan", label: "Sedan",         desc: "가장 많이 사랑받는 프리미엄 중형 세단." },
+    { name: "E-Class",  type: "sedan", label: "Sedan",         desc: "비즈니스와 가족 모두를 위한 베스트셀러." },
+    { name: "S-Class",  type: "sedan", label: "Flagship",      desc: "최고의 편안함과 품격을 갖춘 플래그십." },
+    { name: "GLA",      type: "suv",   label: "Compact SUV",   desc: "실용성과 스타일을 모두 갖춘 컴팩트 SUV." },
+    { name: "GLC",      type: "suv",   label: "SUV",           desc: "균형 잡힌 크기와 성능의 인기 중형 SUV." },
+    { name: "GLE",      type: "suv",   label: "SUV",           desc: "넉넉한 공간의 패밀리 프리미엄 SUV." },
+    { name: "G-Class",  type: "suv",   label: "Off-road",      desc: "시대를 초월한 아이코닉 오프로더." },
+    { name: "EQE",      type: "ev",    label: "Electric",      desc: "조용하고 부드러운 전기 비즈니스 세단." },
+    { name: "EQS",      type: "ev",    label: "Electric",      desc: "전동화 시대의 럭셔리 플래그십." },
+    { name: "AMG C 63", type: "amg",   label: "AMG",           desc: "일상과 서킷을 넘나드는 퍼포먼스." },
+    { name: "AMG GT",   type: "amg",   label: "AMG",           desc: "순수한 드라이빙을 위한 스포츠카." },
+  ];
+
+  const grid = document.getElementById("models");
+  const sel = document.getElementById("model");
+  function render(f) {
+    grid.innerHTML = MODELS.filter(m => f === "all" || m.type === f).map(m => `
+      <div class="model">
+        <div class="type">${m.label}</div>
+        <h4>${m.name}</h4>
+        <p>${m.desc}</p>
+        <a href="#contact" data-model="${m.name}">견적 문의 →</a>
+      </div>`).join("");
+  }
+  render("all");
+  MODELS.forEach(m => sel.add(new Option(m.name)));
+
+  document.getElementById("tabs").addEventListener("click", e => {
+    if (!e.target.dataset.f) return;
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t === e.target));
+    render(e.target.dataset.f);
+  });
+  grid.addEventListener("click", e => {
+    if (e.target.dataset.model) sel.value = e.target.dataset.model;
+  });
+
+  // 폼 제출 → 메일 앱으로 내용 전달
+  document.getElementById("form").addEventListener("submit", e => {
+    e.preventDefault();
+    const v = id => document.getElementById(id).value;
+    const body = `성함: ${v("name")}\n연락처: ${v("phone")}\n관심 차종: ${v("model")}\n구매 방식: ${v("type")}\n\n${v("msg")}`;
+    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("[벤츠 상담 신청] " + v("name"))}&body=${encodeURIComponent(body)}`;
+  });
+
+  // 스크롤 애니메이션
+  const io = new IntersectionObserver(es => es.forEach(x => x.isIntersecting && x.target.classList.add("in")), { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
