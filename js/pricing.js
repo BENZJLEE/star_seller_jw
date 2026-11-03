@@ -59,8 +59,8 @@ window.PRICING = {
     { my: "MY26", cls: "A · CLA · GLA · GLB", name: "Mercedes-AMG CLA 45 S 4MATIC+", msrp: 91800000, cash: 5 },
     { my: "MY26", cls: "A · CLA · GLA · GLB", name: "GLA 250 4MATIC AMG Line", msrp: 70000000, cash: 9, mbf: 4 },
     { my: "MY27", cls: "A · CLA · GLA · GLB", name: "GLA 250 4MATIC AMG Line", msrp: 70800000, cash: 9, mbf: 4 },
-    { my: "MY26", cls: "A · CLA · GLA · GLB", name: "GLB 250 4MATIC", msrp: 72000000, cash: 13, mbf: 4, free: "24개월 무이자" },
-    { my: "MY26", cls: "A · CLA · GLA · GLB", name: "Mercedes-AMG GLB 35 4MATIC", msrp: 79500000, cash: 9, mbf: 4, free: "24/36개월 무이자" },
+    { my: "MY26", cls: "A · CLA · GLA · GLB", name: "GLB 250 4MATIC", msrp: 72000000, cash: 13, mbf: 4, free: "24개월 무이자", guide: "glb" },
+    { my: "MY26", cls: "A · CLA · GLA · GLB", name: "Mercedes-AMG GLB 35 4MATIC", msrp: 79500000, cash: 9, mbf: 4, free: "24/36개월 무이자", guide: "glb" },
     { my: "MY27", cls: "A · CLA · GLA · GLB", name: "CLA 220", msrp: 59900000, cash: 0, badge: "신규 출시" },
     { my: "MY27", cls: "A · CLA · GLA · GLB", name: "CLA 220 AMG Line", msrp: 62900000, cash: 0, badge: "신규 출시" },
 

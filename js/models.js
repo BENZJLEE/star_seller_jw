@@ -68,6 +68,22 @@ window.MODELS = [
     fit: ["business", "family", "comfort", "space"]
   },
   {
+    id: "glb",
+    name: "GLB",
+    category: "suv",
+    shape: "suv",
+    image: "assets/images/glb.jpg",
+    tier: 1,
+    seats: 5,
+    ev: false,
+    tagline: "각진 디자인과 넉넉한 실내의 실용적인 컴팩트 SUV.",
+    forWho: "첫 벤츠 SUV를 찾는 분, 공간을 중시하는 젊은 가족",
+    drive: "도심에서 다루기 쉬운 크기에 4MATIC 사륜구동의 안정감.",
+    space: "컴팩트 SUV 중 실내와 적재 공간이 넉넉한 편입니다. 좌석 구성은 상담 시 확인해 주세요.",
+    consider: "GLC와 크기 · 가격 차이를 비교해 보시면 선택이 쉬워집니다.",
+    fit: ["family", "commute", "space", "leisure"]
+  },
+  {
     id: "glc",
     name: "GLC",
     category: "suv",
