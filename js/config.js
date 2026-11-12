@@ -16,11 +16,11 @@ window.SITE_CONFIG = {
   /* ---------- 소속 · 직함 ----------
      입사·배치가 확정되기 전에는 enabled: false 로 두세요.
      false  → "메르세데스-벤츠 세일즈 컨설턴트 이진우" 로 표시
-     true   → "HS효성 더클래스 구리전시장 · 이진우 과장" 으로 표시
+     true   → "HS효성더클래스 구리전시장 · 이진우 과장" 으로 표시
      address 는 근무지가 확정된 뒤 정확한 주소만 입력하세요. (비워두면 표시 안 함) */
   affiliation: {
     enabled: true,
-    company: "HS효성 더클래스",
+    company: "HS효성더클래스",
     showroom: "구리전시장",
     title: "과장",
     address: "경기 구리시 한다리길 13 (교문동)"

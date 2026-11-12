@@ -34,7 +34,7 @@ GitHub 웹사이트에서 파일을 열고 연필(✏️) 아이콘 → 수정 �
 ```js
 affiliation: {
   enabled: true,            // false → true 로 변경
-  company: "HS효성 더클래스",
+  company: "HS효성더클래스",
   showroom: "구리전시장",
   title: "과장",
   address: "근무지 정확한 주소"   // 확정된 주소만 입력
