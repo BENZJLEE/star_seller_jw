@@ -19,11 +19,11 @@ window.SITE_CONFIG = {
      true   → "HS효성 더클래스 구리전시장 · 이진우 과장" 으로 표시
      address 는 근무지가 확정된 뒤 정확한 주소만 입력하세요. (비워두면 표시 안 함) */
   affiliation: {
-    enabled: false,
+    enabled: true,
     company: "HS효성 더클래스",
     showroom: "구리전시장",
     title: "과장",
-    address: ""
+    address: "경기 구리시 한다리길 13 (교문동)"
   },
   neutralTitle: "메르세데스-벤츠 세일즈 컨설턴트",
 
@@ -40,7 +40,7 @@ window.SITE_CONFIG = {
   /* ---------- SNS ----------
      주소를 넣은 항목만 화면에 표시됩니다. */
   sns: {
-    youtube: "",
+    youtube: "https://www.youtube.com/@star_seller_jw",
     instagram: "",
     blog: ""
   },
