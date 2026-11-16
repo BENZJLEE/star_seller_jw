@@ -10,8 +10,8 @@ window.SITE_CONFIG = {
 
   /* ---------- 담당자 ---------- */
   name: "이진우",
-  nameEn: "JINWOO LEE",
-  brandLine: "Mercedes-Benz Personal Guide",
+  nameEn: "STAR SELLER",
+  brandLine: "스타셀러 · 벤츠 공식딜러 이진우",
 
   /* ---------- 소속 · 직함 ----------
      입사·배치가 확정되기 전에는 enabled: false 로 두세요.
