@@ -16,6 +16,7 @@
      mbf       벤츠파이낸셜 이용 시 추가 할인율 (%)  없으면 생략
      mbfNote   MBF 할인 조건 설명 (생략 시 "벤츠파이낸셜 이용 시")
      free      무이자 할부 안내 (예: "24개월 무이자")
+     down      무이자 할부에 필요한 선수금 비율(%). 생략하면 위 freeDown 값 사용
      badge     카드 위 강조 문구 (예: "11월 할인 상향")
      guide     차량 가이드 모델 id (상담 폼 관심 차량 자동 선택용, 선택)
      note      기타 안내
@@ -27,6 +28,9 @@ window.PRICING = {
   month: "2026년 11월",
   period: "2026년 11월 1일 ~ 11월 30일",
   priceListDate: "2026년 10월 23일",
+
+  /* 무이자 할부에 필요한 선수금 비율(%). 모델마다 다르면 그 줄에 down: 75 처럼 따로 적습니다. */
+  freeDown: 65,
 
   CLASSES: ["A · CLA · GLA · GLB", "C-Class", "E-Class", "S-Class", "CLE · SL · AMG GT", "GLC", "GLE · GLS", "G-Class", "EQ · Electric"],
 
@@ -71,8 +75,8 @@ window.PRICING = {
 
     /* ---------- E-Class ---------- */
     { my: "MY26", cls: "E-Class", name: "E 200 AVANTGARDE", msrp: 77500000, cash: 16, guide: "e-class" },
-    { my: "MY26", cls: "E-Class", name: "E 200 EXCLUSIVE", msrp: 77500000, cash: 15, mbf: 5, free: "24개월 무이자", guide: "e-class" },
-    { my: "MY26", cls: "E-Class", name: "E 200 AMG Line", msrp: 81000000, cash: 15, mbf: 4, free: "24개월 무이자", guide: "e-class" },
+    { my: "MY26", cls: "E-Class", name: "E 200 EXCLUSIVE", msrp: 77500000, cash: 15, mbf: 5, free: "24개월 무이자", down: 75, guide: "e-class" },
+    { my: "MY26", cls: "E-Class", name: "E 200 AMG Line", msrp: 81000000, cash: 15, mbf: 4, free: "24개월 무이자", down: 75, guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "E 220 d 4MATIC EXCLUSIVE", msrp: 87200000, cash: 12, guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "E 300 4MATIC EXCLUSIVE", msrp: 94800000, cash: 10, mbf: 4, free: "24개월 무이자", guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "E 300 4MATIC AMG Line", msrp: 99000000, cash: 10, mbf: 4, free: "24개월 무이자", guide: "e-class" },
@@ -80,8 +84,8 @@ window.PRICING = {
     { my: "MY26", cls: "E-Class", name: "E 450 4MATIC AMG Line", msrp: 116000000, cash: 11, guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "E 450 4MATIC EXCLUSIVE", msrp: 129600000, cash: 11, guide: "e-class" },
     { my: "MY26", cls: "E-Class", name: "Mercedes-AMG E 53 HYBRID 4MATIC+", msrp: 148400000, cash: 10, free: "24/36개월 무이자", guide: "amg-e" },
-    { my: "MY27", cls: "E-Class", name: "E 200 EXCLUSIVE", msrp: 77500000, cash: 14, mbf: 4, free: "24개월 무이자", badge: "11월 무이자 신설", guide: "e-class" },
-    { my: "MY27", cls: "E-Class", name: "E 200 AMG Line", msrp: 81000000, cash: 14, mbf: 3, free: "24개월 무이자", badge: "11월 무이자 신설", guide: "e-class" },
+    { my: "MY27", cls: "E-Class", name: "E 200 EXCLUSIVE", msrp: 77500000, cash: 14, mbf: 4, free: "24개월 무이자", down: 75, badge: "11월 무이자 신설", guide: "e-class" },
+    { my: "MY27", cls: "E-Class", name: "E 200 AMG Line", msrp: 81000000, cash: 14, mbf: 3, free: "24개월 무이자", down: 75, badge: "11월 무이자 신설", guide: "e-class" },
     { my: "MY27", cls: "E-Class", name: "E 300 4MATIC EXCLUSIVE", msrp: 94800000, cash: 8, mbf: 4, guide: "e-class" },
     { my: "MY27", cls: "E-Class", name: "E 300 4MATIC AMG Line", msrp: 100100000, cash: 8, mbf: 4, guide: "e-class" },
     { my: "MY27", cls: "E-Class", name: "E 450 4MATIC AMG Line", msrp: 117200000, cash: 10, guide: "e-class" },

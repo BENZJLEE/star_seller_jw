@@ -36,8 +36,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261117a">
-  <link rel="stylesheet" href="css/star.css?v=20261117a">
+  <link rel="stylesheet" href="css/style.css?v=20261117b">
+  <link rel="stylesheet" href="css/star.css?v=20261117b">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -83,7 +83,7 @@
         <dl class="hd__nums">
           <div><dt>차량가</dt><dd><s id="hdMsrp">7,750만원</s></dd></div>
           <div><dt><span id="hdMonth2">11월</span> 최종가</dt><dd id="hdFinal">6,200만원</dd></div>
-          <div id="hdFreeBox"><dt>벤츠파이낸셜</dt><dd class="hd__gold" id="hdFree">24개월 무이자</dd></div>
+          <div id="hdFreeBox"><dt>벤츠파이낸셜</dt><dd class="hd__gold" id="hdFree">24개월 무이자</dd><dd class="hd__down" id="hdDown"></dd></div>
         </dl>
       </div>
 
@@ -565,13 +565,13 @@
   <a href="#contact" class="quickbar__main">상담 신청</a>
 </nav>
 
-<script src="js/config.js?v=20261117a"></script>
-<script src="js/models.js?v=20261117a"></script>
-<script src="js/pricing.js?v=20261117a"></script>
-<script src="js/prices.js?v=20261117a"></script>
-<script src="js/finance.js?v=20261117a"></script>
-<script src="js/mou.js?v=20261117a"></script>
-<script src="js/main.js?v=20261117a"></script>
+<script src="js/config.js?v=20261117b"></script>
+<script src="js/models.js?v=20261117b"></script>
+<script src="js/pricing.js?v=20261117b"></script>
+<script src="js/prices.js?v=20261117b"></script>
+<script src="js/finance.js?v=20261117b"></script>
+<script src="js/mou.js?v=20261117b"></script>
+<script src="js/main.js?v=20261117b"></script>
 <script>
 /* 메인 화면 '이달의 별' — 가격표 데이터(js/pricing.js)를 그대로 읽어 자동으로 바뀝니다 */
 (function () {
@@ -603,6 +603,7 @@
     $("hdMsrp").textContent = K.won(c.msrp);
     $("hdFinal").textContent = K.won(c.final);
     $("hdFreeBox").hidden = !it.free; $("hdFree").textContent = it.free || "";
+    $("hdDown").textContent = K.down(it) ? "선수금 " + K.down(it) + "%" : "";
     [].forEach.call(dots.children, function (d, n) { d.setAttribute("aria-selected", n === i ? "true" : "false"); });
     bg(c);
   }

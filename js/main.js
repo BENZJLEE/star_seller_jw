@@ -583,7 +583,7 @@
           '<div><dt>최종가</dt><dd class="deal__final">' + PK.won(c.final) + "</dd></div>" +
           "</dl>" +
           '<p class="deal__rate">' + esc(PK.rateText(it)) + (it.mbf ? '<span>' + esc(it.mbfNote || "벤츠파이낸셜 이용 시") + "</span>" : "") + "</p>" +
-          (it.free ? '<p class="deal__tag">' + esc(it.free) + " 할부 가능</p>" : "") +
+          (it.free ? '<p class="deal__tag">' + esc(it.free) + " 할부 가능" + (PK.down(it) ? '<span class="deal__down">선수금 ' + PK.down(it) + "%</span>" : "") + "</p>" : "") +
           '<button type="button" class="btn btn--dark btn--block" data-quote="' + esc(c.key) + '">이 조건으로 견적 받기</button>' +
           "</article>";
       }).join("");

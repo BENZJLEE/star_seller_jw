@@ -68,6 +68,7 @@
     featured: function () {
       return (P.featured || []).map(this.find).filter(Boolean);
     },
+    down: function (it) { return it && it.free ? (it.down || P.freeDown || 0) : 0; },
     won: won,
     rateText: rateText,
     quoteMessage: quoteMessage
