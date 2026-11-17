@@ -193,3 +193,59 @@
 .dock.is-mini:hover .dock__kakao, .dock.is-mini:focus-within .dock__kakao { max-width: 220px; padding: 0 22px; gap: 8px; }
 .dock.is-mini:hover .dock__kakao span, .dock.is-mini:focus-within .dock__kakao span { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .dock__card, .dock__kakao, .dock__kakao span { transition: none; } }
+
+/* ==========================================================================
+   신형 차량 딱지 · 상세 창의 신형 포인트 · 블로그 버튼
+   ========================================================================== */
+.card__visual { position: relative; }
+.card__badge { position: absolute; left: 14px; top: 14px; padding: 5px 11px; background: var(--gold); color: #000; font-size: 12px; font-weight: 700; letter-spacing: .02em; border-radius: 4px; }
+.modal__badge { display: inline-block; margin: 2px 0 8px; padding: 4px 10px; background: var(--gold); color: #000; font-size: 12px; font-weight: 700; border-radius: 4px; }
+.modal__badge[hidden], .modal__list > div[hidden] { display: none; }
+.modal__news { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.hd-tile__img { position: relative; }
+.hd-tile__new { position: absolute; left: 12px; top: 12px; padding: 4px 10px; background: var(--gold); color: #000; font-size: 11px; font-weight: 800; font-style: normal; letter-spacing: .12em; border-radius: 4px; }
+.hd__links { display: inline-flex; flex-wrap: wrap; gap: 8px; margin-left: 6px; }
+.hd__links .hd__yt { margin-left: 0; }
+.hd__blog i { background: #03c75a; font-size: 10px; font-weight: 900; color: #fff; }
+@media (max-width: 860px) { .hd__links { margin-left: 84px; } .hd-tile__new { display: none; } }
+
+/* ==========================================================================
+   벤츠파이낸셜 금융 혜택
+   ========================================================================== */
+.fin { background: var(--white); }
+.fin__points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fin-card { border: 1px solid var(--line); padding: 26px 24px 24px; display: flex; flex-direction: column; background: var(--white); transition: border-color .2s, transform .3s var(--ease); }
+.fin-card:hover { border-color: var(--ink); transform: translateY(-3px); }
+.fin-card__big { font-size: clamp(34px, 3.6vw, 46px); font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--ink); }
+.fin-card__big::after { content: ""; display: block; width: 28px; height: 3px; background: var(--gold); margin-top: 14px; }
+.fin-card__title { font-size: 18px; font-weight: 700; margin-top: 14px; }
+.fin-card__desc { font-size: 14px; color: var(--ink-2); margin-top: 8px; line-height: 1.7; flex: 1; }
+.fin-card__sub { font-size: 12px; color: var(--muted); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+.fin__fleet { margin-top: 16px; padding: 22px 24px; background: var(--black); color: var(--white); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px 24px; align-items: center; }
+.fin__fleet[hidden] { display: none; }
+.fin__fleet b { color: var(--gold); font-size: 14px; white-space: nowrap; }
+.fin__fleet p { margin: 0; font-size: 14px; color: rgba(255,255,255,.85); }
+.fin__fleet a { font-size: 14px; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 2px; }
+
+.fin__more { margin-top: 16px; border: 1px solid var(--line); }
+.fin__more summary { cursor: pointer; list-style: none; padding: 18px 24px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+.fin__more summary::-webkit-details-marker { display: none; }
+.fin__more summary span { font-size: 22px; font-weight: 300; transition: transform .2s; }
+.fin__more[open] summary span { transform: rotate(45deg); }
+.fin__more[open] summary { border-bottom: 1px solid var(--line); }
+.fin__basis { padding: 16px 24px 0; font-size: 13px; color: var(--ink-2); }
+.fin__scroll { overflow-x: auto; padding: 12px 24px 0; }
+.fin-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; }
+.fin-table thead th { text-align: left; font-size: 12px; font-weight: 500; color: var(--muted); padding: 10px 12px 10px 0; border-bottom: 1px solid var(--ink); vertical-align: bottom; line-height: 1.4; }
+.fin-table tbody th { text-align: left; font-weight: 500; padding: 11px 12px 11px 0; }
+.fin-table td { padding: 11px 12px 11px 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.fin-table tbody tr { border-bottom: 1px solid var(--line); }
+.fin-table__cls th { padding-top: 22px !important; font-size: 11px; letter-spacing: .18em; color: var(--muted); font-weight: 500 !important; }
+.fin-my { display: inline-block; font-size: 10px; letter-spacing: .1em; color: var(--muted); border: 1px solid var(--line); padding: 1px 6px; margin-right: 8px; vertical-align: 1px; }
+.fin-star { font-style: normal; color: var(--gold); }
+.fin__others { padding: 14px 24px 20px; font-size: 13px; color: var(--muted); }
+.fin__cta { margin-top: 24px; }
+
+@media (max-width: 980px) { .fin__points { grid-template-columns: repeat(2, 1fr); } .fin__fleet { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .fin__points { grid-template-columns: 1fr; } .fin-card { padding: 22px 20px; } .fin__cta { width: 100%; } }

@@ -46,7 +46,7 @@
     }
 
     var sns = CFG.sns || {};
-    var snsNames = { youtube: "YouTube", instagram: "Instagram", blog: "Blog" };
+    var snsNames = { youtube: "YouTube", instagram: "Instagram", blog: "네이버 블로그" };
     $("#snsLinks").innerHTML = Object.keys(snsNames).filter(function (k) { return sns[k]; }).map(function (k) {
       return '<a href="' + esc(sns[k]) + '" target="_blank" rel="noopener">' + snsNames[k] + "</a>";
     }).join("");
@@ -200,7 +200,7 @@
     var list = MODELS.filter(function (m) { return filter === "all" || m.category === filter; });
     $("#modelGrid").innerHTML = list.map(function (m, i) {
       return '<article class="card" style="animation-delay:' + (i * 50) + 'ms">' +
-        '<div class="card__visual' + (m.image ? ' is-photo' : '') + '">' + visualHTML(m, true) + "</div>" +
+        '<div class="card__visual' + (m.image ? ' is-photo' : '') + '">' + visualHTML(m, true) + (m.badge ? '<span class="card__badge">' + esc(m.badge) + "</span>" : "") + "</div>" +
         '<div class="card__body">' +
         '<p class="card__cat">' + CATEGORY_LABEL[m.category] + "</p>" +
         '<h3 class="card__name">' + esc(m.name) + "</h3>" +
@@ -255,6 +255,10 @@
       $("#modalDrive").textContent = m.drive;
       $("#modalSpace").textContent = m.space;
       $("#modalConsider").textContent = m.consider;
+      $("#modalBadge").hidden = !m.badge; $("#modalBadge").textContent = m.badge || "";
+      $("#modalNewsRow").hidden = !(m.news && m.news.length);
+      $("#modalNews").innerHTML = (m.news || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
+      $("#modalLineupRow").hidden = !m.lineup; $("#modalLineup").textContent = m.lineup || "";
       if (typeof modal.showModal === "function") modal.showModal(); else modal.setAttribute("open", "");
       document.body.style.overflow = "hidden";
     }

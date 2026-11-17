@@ -42,7 +42,7 @@ window.SITE_CONFIG = {
   sns: {
     youtube: "https://www.youtube.com/@star_seller_jw",
     instagram: "",
-    blog: ""
+    blog: "https://blog.naver.com/benz_jay"
   },
 
   /* ---------- 이달의 프로모션 ----------

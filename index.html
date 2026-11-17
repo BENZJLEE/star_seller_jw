@@ -36,8 +36,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261116b">
-  <link rel="stylesheet" href="css/star.css?v=20261116b">
+  <link rel="stylesheet" href="css/style.css?v=20261117a">
+  <link rel="stylesheet" href="css/star.css?v=20261117a">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -96,14 +96,15 @@
       <div class="hd__who">
         <div class="hd__face"><img src="assets/images/jinwoo.jpg" alt="스타셀러 이진우" width="354" height="472"></div>
         <p><span class="hd__slogan">벤츠 선택의 기준, 이진우.</span><br><b>스타셀러 <span data-cfg="name">이진우</span></b>가 직접 안내합니다.<br><span class="hd__role" data-role-line>메르세데스-벤츠 세일즈 컨설턴트 이진우</span></p>
-        <a class="hd__yt" href="https://www.youtube.com/@star_seller_jw" target="_blank" rel="noopener"><i aria-hidden="true">▶</i>유튜브</a>
+        <span class="hd__links"><a class="hd__yt" href="https://www.youtube.com/@star_seller_jw" target="_blank" rel="noopener"><i aria-hidden="true">▶</i>유튜브</a>
+        <a class="hd__yt hd__blog" href="https://blog.naver.com/benz_jay" target="_blank" rel="noopener"><i aria-hidden="true">N</i>블로그</a></span>
       </div>
     </div>
 
     <div class="hd__side">
-      <a class="hd-tile" href="price.html">
-        <span class="hd-tile__img" style="background-image:url(assets/images/glc.jpg)"></span>
-        <span class="hd-tile__txt"><small><span id="hdMonth3">11월</span> 구매 조건</small><b>전체 차종 가격표 보기 →</b><em>차종별 할인과 최종가를 한 번에</em></span>
+      <a class="hd-tile" href="#models">
+        <span class="hd-tile__img" style="background-image:url(assets/images/gle-new.jpg)"><i class="hd-tile__new">NEW</i></span>
+        <span class="hd-tile__txt"><small>27년식 신형 출시</small><b>The new GLE · GLS →</b><em>신형에서 달라진 점 보기</em></span>
       </a>
       <a class="hd-tile" href="#mou">
         <span class="hd-tile__img" style="background-image:url(assets/images/s-class.jpg)"></span>
@@ -126,6 +127,40 @@
     </div>
     <div class="deal-track" id="dealTrack"></div>
     <p class="note" id="dealsNote"></p>
+  </div>
+</section>
+
+<!-- ================= 금융 혜택 (js/finance.js) ================= -->
+<section class="section fin" id="finance" hidden>
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">MERCEDES-BENZ FINANCIAL</p>
+      <h2 class="section__title" id="finTitle">벤츠파이낸셜 금융 혜택</h2>
+      <p class="section__desc">차량 할인에 더해, 금융을 어떻게 이용하느냐에 따라 달라지는 이달의 혜택을 6가지로 정리했습니다.</p>
+    </div>
+
+    <div class="fin__points reveal" id="finPoints"></div>
+
+    <div class="fin__fleet reveal" id="finFleetBox" hidden>
+      <b>제휴 법인 · 사업자 고객</b>
+      <p id="finFleet"></p>
+      <a href="#mou">우리 회사가 제휴사인지 확인하기 →</a>
+    </div>
+
+    <details class="fin__more reveal">
+      <summary>차종별 금융 조건 자세히 보기 <span aria-hidden="true">+</span></summary>
+      <p class="fin__basis">금리는 <b id="finBasis"></b>입니다. ★ 는 이달 혜택이 가장 큰 모델입니다.</p>
+      <div class="fin__scroll">
+        <table class="fin-table">
+          <thead><tr><th scope="col">모델</th><th scope="col">금융 이용 시<br>추가 할인</th><th scope="col">할부 금리</th><th scope="col">MB-SURE<br>금리</th><th scope="col">무이자 할부</th><th scope="col">운용리스</th></tr></thead>
+          <tbody id="finRows"></tbody>
+        </table>
+      </div>
+      <p class="fin__others" id="finOthers"></p>
+    </details>
+
+    <p class="note" id="finNote"></p>
+    <a href="#contact" class="btn btn--dark fin__cta">내 조건으로 월 납입금 상담받기</a>
   </div>
 </section>
 
@@ -203,9 +238,12 @@
     <button type="button" class="modal__close" data-close aria-label="닫기">&times;</button>
     <div class="modal__visual" id="modalVisual" aria-hidden="true"></div>
     <p class="eyebrow" id="modalCat"></p>
+    <span class="modal__badge" id="modalBadge" hidden></span>
     <h3 class="modal__title serif" id="modalTitle"></h3>
     <p class="modal__tagline" id="modalTagline"></p>
     <dl class="modal__list">
+      <div id="modalNewsRow" hidden><dt>신형 포인트</dt><dd><ul class="modal__news" id="modalNews"></ul></dd></div>
+      <div id="modalLineupRow" hidden><dt>카탈로그 라인업</dt><dd id="modalLineup"></dd></div>
       <div><dt>추천 고객</dt><dd id="modalFor"></dd></div>
       <div><dt>주행 특성</dt><dd id="modalDrive"></dd></div>
       <div><dt>공간 활용</dt><dd id="modalSpace"></dd></div>
@@ -527,12 +565,13 @@
   <a href="#contact" class="quickbar__main">상담 신청</a>
 </nav>
 
-<script src="js/config.js?v=20261116b"></script>
-<script src="js/models.js?v=20261116b"></script>
-<script src="js/pricing.js?v=20261116b"></script>
-<script src="js/prices.js?v=20261116b"></script>
-<script src="js/mou.js?v=20261116b"></script>
-<script src="js/main.js?v=20261116b"></script>
+<script src="js/config.js?v=20261117a"></script>
+<script src="js/models.js?v=20261117a"></script>
+<script src="js/pricing.js?v=20261117a"></script>
+<script src="js/prices.js?v=20261117a"></script>
+<script src="js/finance.js?v=20261117a"></script>
+<script src="js/mou.js?v=20261117a"></script>
+<script src="js/main.js?v=20261117a"></script>
 <script>
 /* 메인 화면 '이달의 별' — 가격표 데이터(js/pricing.js)를 그대로 읽어 자동으로 바뀝니다 */
 (function () {
@@ -542,7 +581,7 @@
   if (!list.length) return;
   var i = 0, timer, swap = $("hdSwap"), dots = $("hdDots"), front = true;
   var month = K.data.month || "", m = month.replace(/^\d+년\s*/, "");
-  $("hdMonth").textContent = month; $("hdMonth2").textContent = m; $("hdMonth3").textContent = m;
+  $("hdMonth").textContent = month; $("hdMonth2").textContent = m;
 
   list.forEach(function (c, n) {
     var b = document.createElement("button");

@@ -10,6 +10,9 @@
               비워두면 실루엣 일러스트가 표시됩니다.
    tier     : 1 엔트리 · 2 중형 · 3 상위 · 4 플래그십  (추천 기능의 예산 단계와 비교)
    seats    : 추천 기능에서 쓰는 일반적인 좌석 구성 기준 (5 또는 7)
+   badge    : 카드 사진 위에 붙는 딱지 (예: "신형 · 27년식"). 없으면 생략
+   news     : 상세 창의 "신형 포인트" 목록. 없으면 생략
+   lineup   : 상세 창의 "카탈로그 라인업". 없으면 생략
    ev       : 전기차 여부
    fit      : 추천 기능 태그
               용도  commute(출퇴근) family(가족) business(업무·의전) leisure(레저·여행)
@@ -104,14 +107,23 @@ window.MODELS = [
     name: "GLE",
     category: "suv",
     shape: "suv",
-    image: "assets/images/gle.jpg",
+    image: "assets/images/gle-new.jpg",
+    badge: "신형 · 27년식",
     tier: 3,
     seats: 5,
     ev: false,
-    tagline: "넉넉한 공간과 여유로운 주행의 패밀리 SUV.",
+    tagline: "새 얼굴과 새 운영체제로 돌아온 패밀리 SUV, The new GLE.",
     forWho: "가족 장거리 여행이 잦은 분, 공간을 중시하는 분",
-    drive: "큰 차체에서 오는 안정감과 편안한 장거리 주행.",
-    space: "2열 공간과 적재 공간이 넉넉한 편입니다.",
+    drive: "직렬 6기통 가솔린 엔진과 큰 차체에서 오는 안정감, 편안한 장거리 주행.",
+    space: "2열 공간과 적재 공간이 넉넉한 편입니다. 쿠페형인 GLE Coupé도 함께 나왔습니다.",
+    news: [
+      "발광 라디에이터 그릴과 스타 디자인 헤드램프의 새 전면 디자인",
+      "12.3인치 화면 3개가 이어진 MBUX 슈퍼스크린",
+      "새 운영체제 MB.OS",
+      "스피커 15개 · Dolby Atmos 부메스터 3D 서라운드 사운드",
+      "파노라마 슬라이딩 선루프 기본"
+    ],
+    lineup: "GLE 450 4MATIC · GLE 450 4MATIC AMG Line · GLE 450 4MATIC Coupé",
     consider: "3열이 꼭 필요하다면 GLS와 비교가 필요합니다.",
     fit: ["family", "leisure", "space", "comfort"]
   },
@@ -120,14 +132,23 @@ window.MODELS = [
     name: "GLS",
     category: "suv",
     shape: "large-suv",
-    image: "assets/images/gls.jpg",
+    image: "assets/images/gls-new.jpg",
+    badge: "신형 · 27년식",
     tier: 4,
     seats: 7,
     ev: false,
-    tagline: "3열까지 여유로운 대형 럭셔리 SUV.",
+    tagline: "3열까지 퍼스트 클래스, 신형으로 돌아온 The new GLS.",
     forWho: "5인 이상 탑승이 잦은 가족, 의전용 SUV",
-    drive: "대형 SUV다운 묵직하고 편안한 주행 성격.",
-    space: "3열 구성으로 다인원 이동에 적합합니다.",
+    drive: "직렬 6기통 가솔린 엔진과 대형 SUV다운 묵직하고 편안한 주행 성격.",
+    space: "최대 7인이 탈 수 있는 3열 구성이며, 2열이 독립 시트인 6인승도 있습니다.",
+    news: [
+      "크롬 프레임과 발광 라디에이터 그릴의 새 전면 디자인",
+      "새 운영체제 MB.OS와 MBUX 슈퍼스크린",
+      "2열 독립 시트의 럭셔리 6인승 구성",
+      "화면 2개의 MBUX 뒷좌석 엔터테인먼트 시스템",
+      "3열 시트 열선"
+    ],
+    lineup: "GLS 450 4MATIC · GLS 450 4MATIC AMG Line",
     consider: "차체가 크므로 주차 공간과 기계식 주차 여부를 꼭 확인하세요.",
     fit: ["family", "business", "space", "comfort"]
   },
