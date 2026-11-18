@@ -27,12 +27,12 @@
 window.PRICING = {
   month: "2026년 11월",
   period: "2026년 11월 1일 ~ 11월 30일",
-  priceListDate: "2026년 10월 23일",
+  priceListDate: "2026년 11월 16일",
 
   /* 무이자 할부에 필요한 선수금 비율(%). 모델마다 다르면 그 줄에 down: 75 처럼 따로 적습니다. */
   freeDown: 65,
 
-  CLASSES: ["A · CLA · GLA · GLB", "C-Class", "E-Class", "S-Class", "CLE · SL · AMG GT", "GLC", "GLE · GLS", "G-Class", "EQ · Electric"],
+  CLASSES: ["A · CLA · GLA · GLB", "C-Class", "E-Class", "S-Class", "CLE · SL · AMG GT", "GLC", "GLE · GLS", "G-Class", "V-Class", "EQ · Electric"],
 
   /* 첫 화면 '이달의 조건' 카드에 보여줄 모델 (아래 items 의 my + name 과 정확히 일치) */
   featured: [
@@ -159,6 +159,12 @@ window.PRICING = {
     { my: "MY26", cls: "GLE · GLS", name: "Mercedes-AMG GLS 63 4MATIC+", msrp: 210000000, cash: 1, free: "24/36개월 무이자", guide: "gls" },
     { my: "MY26", cls: "GLE · GLS", name: "Mercedes-Maybach GLS 600", msrp: 295000000, cash: 5, free: "24/36개월 무이자", note: "재구매 시 +9% / 타 프리미엄 브랜드 보유 시 +7%", guide: "gls" },
     { my: "MY26", cls: "GLE · GLS", name: "Mercedes-Maybach GLS 600 MANUFAKTUR", msrp: 337000000, cash: 5, free: "24/36개월 무이자", note: "재구매 시 +9% / 타 프리미엄 브랜드 보유 시 +7%", guide: "gls" },
+    { my: "MY27", cls: "GLE · GLS", name: "GLE 450 4MATIC AMG Line", msrp: 136700000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "gle" },
+    { my: "MY27", cls: "GLE · GLS", name: "GLE 450 4MATIC Coupé", msrp: 140800000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "gle" },
+    { my: "MY27", cls: "GLE · GLS", name: "GLS 450 4MATIC", msrp: 155100000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "gls" },
+    { my: "MY27", cls: "GLE · GLS", name: "GLS 450 4MATIC 6-seater", msrp: 152000000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "gls" },
+    { my: "MY27", cls: "GLE · GLS", name: "GLS 450 4MATIC AMG Line", msrp: 161200000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "gls" },
+    { my: "MY27", cls: "GLE · GLS", name: "GLS 450 4MATIC AMG Line 6-seater", msrp: 158100000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "gls" },
 
     /* ---------- G-Class ---------- */
     { my: "MY26", cls: "G-Class", name: "G 450 d", msrp: 194900000, cash: 0, guide: "g-class" },
@@ -167,7 +173,18 @@ window.PRICING = {
     { my: "MY26", cls: "G-Class", name: "Mercedes-AMG G 63 MANUFAKTUR", msrp: 289800000, cash: 0, free: "24/36개월 무이자", note: "11월 출고 시 G-Class 캐리어 (선착순)", guide: "amg-g63" },
     { my: "MY26", cls: "G-Class", name: "G 580 with EQ Technology", msrp: 216100000, cash: 0, guide: "g-class" },
 
+    /* ---------- V-Class ---------- */
+    { my: "MY27", cls: "V-Class", name: "V 300 d 4MATIC EXCLUSIVE", msrp: 124000000, cash: 0, badge: "신형", note: "11월 할인 조건은 상담 시 안내", guide: "v-class" },
+
     /* ---------- EQ · Electric ---------- */
+    { my: "MY27", cls: "EQ · Electric", name: "CLA 200 electric Essential", msrp: 52900000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "cla-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "CLA 200 electric Advanced", msrp: 55800000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "cla-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "CLA 200 electric AMG Line", msrp: 58900000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "cla-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "CLA 250+ electric", msrp: 63700000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "cla-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "CLA 250+ electric AMG Line", msrp: 67700000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "cla-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "GLB 250+ electric", msrp: 69900000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "glb-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "GLC 300 4MATIC electric AMG Line (Launch Edition)", msrp: 90000000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "glc-electric" },
+    { my: "MY27", cls: "EQ · Electric", name: "GLC 300 4MATIC electric AMG Line+ (Launch Edition)", msrp: 94800000, cash: 0, badge: "신규 출시", note: "11월 할인 조건은 상담 시 안내", guide: "glc-electric" },
     { my: "MY26", cls: "EQ · Electric", name: "EQE 350+", msrp: 110000000, cash: 10, free: "24/36개월 무이자", guide: "eqe" },
     { my: "MY26", cls: "EQ · Electric", name: "EQE 350+ SUV", msrp: 106000000, cash: 10, free: "24/36개월 무이자", guide: "eqe-suv" },
     { my: "MY26", cls: "EQ · Electric", name: "EQE 500 4MATIC SUV", msrp: 141000000, cash: 10, free: "24/36개월 무이자", guide: "eqe-suv" },

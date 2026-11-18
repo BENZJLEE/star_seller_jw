@@ -10,7 +10,7 @@
   var $ = function (s, el) { return (el || document).querySelector(s); };
   var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
 
-  var CATEGORY_LABEL = { sedan: "Sedan", suv: "SUV", electric: "Electric", amg: "AMG / Performance" };
+  var CATEGORY_LABEL = { sedan: "Sedan", suv: "SUV", mpv: "MPV", electric: "Electric", amg: "AMG / Performance" };
 
   function esc(str) {
     return String(str == null ? "" : str).replace(/[&<>"']/g, function (c) {

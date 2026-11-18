@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    차량을 추가하려면 { ... } 한 덩어리를 복사해 붙여넣고 내용을 바꾸세요.
 
-   category : "sedan" | "suv" | "electric" | "amg"   (차량 가이드 필터)
+   category : "sedan" | "suv" | "mpv" | "electric" | "amg"   (차량 가이드 필터)
    shape    : "sedan" | "suv" | "large-suv" | "offroad" | "ev-sedan" | "ev-suv" | "coupe"
               (사진이 없을 때 보여줄 실루엣 일러스트 모양)
    image    : 사용 권리가 확인된 사진만 넣으세요. 예) "assets/images/e-class.jpg"
@@ -167,6 +167,106 @@ window.MODELS = [
     space: "각진 차체 덕분에 실내 헤드룸이 여유 있습니다.",
     consider: "출고 대기와 사양 구성은 시기별 차이가 커서 상담 시 확인이 필요합니다.",
     fit: ["leisure", "design", "performance"]
+  },
+  {
+    id: "v-class",
+    name: "V-Class",
+    category: "mpv",
+    shape: "large-suv",
+    image: "assets/images/v-class.jpg",
+    badge: "신형 · 27년식",
+    tier: 3,
+    seats: 7,
+    ev: false,
+    tagline: "가족과 의전을 위한 넉넉한 7인승, The new V-Class.",
+    forWho: "6~7인 가족 이동이 잦은 분, 의전 · 비즈니스 차량",
+    drive: "4기통 디젤 엔진(1,950cc)과 9단 자동변속기, 에어매틱 에어 서스펜션의 편안한 승차감. 복합연비 10.5km/ℓ.",
+    space: "뒷좌석 첫째 줄에 럭셔리 시트 2개, 둘째 줄에 3인승 벤치를 둔 7인승입니다. 뒷유리만 따로 열어 짐을 실을 수 있습니다.",
+    consider: "차체가 크므로 주차장 높이 제한과 기계식 주차 여부를 꼭 확인하세요.",
+    news: [
+      "마사지 · 열선 · 통풍 · 리클라이닝 럭셔리 시트와 전동 종아리 받침대",
+      "계기판과 미디어 화면이 하나로 이어진 와이드 스크린 콕핏",
+      "2㎡가 넘는 파노라믹 슬라이딩 루프",
+      "LED 라이트밴드 라디에이터 그릴",
+      "뒷유리만 따로 여는 개폐식 테일게이트 윈도우"
+    ],
+    lineup: "V 300 d 4MATIC EXCLUSIVE",
+    fit: ["family", "business", "space", "comfort"]
+  },
+  {
+    id: "cla-electric",
+    name: "CLA electric",
+    category: "electric",
+    shape: "ev-sedan",
+    image: "assets/images/cla-electric.jpg",
+    badge: "신규 출시 · 27년식",
+    tier: 1,
+    seats: 5,
+    ev: true,
+    tagline: "날렵한 실루엣에 새 기술을 담은 전기 세단, The all-new electric CLA.",
+    forWho: "첫 전기차를 찾는 분, 출퇴근 위주의 1~2인 운행",
+    drive: "전기차 특유의 조용하고 매끄러운 가속, 공기역학적으로 다듬은 차체.",
+    space: "세단형 실내에 더해 보닛 아래에도 수납할 수 있는 전면 트렁크가 있습니다.",
+    consider: "주 충전 장소와 하루 주행 거리를 먼저 확인하세요. 트림에 따라 헤드업 디스플레이 · MBUX 슈퍼스크린 적용 여부가 다릅니다.",
+    news: [
+      "800V 급속 충전 · 10%→80% 약 22분 (CLA 250+ 기준, 최대 320kW)",
+      "새 운영체제 MB.OS와 무선 소프트웨어 업데이트",
+      "ChatGPT 기반의 새 MBUX 버추얼 어시스턴트",
+      "조명이 들어오는 일루미네이티드 패널과 파노라믹 루프",
+      "동승석 14인치 화면의 MBUX 슈퍼스크린 (일부 트림)"
+    ],
+    lineup: "CLA 200 electric Essential · Advanced · AMG Line · CLA 250+ electric · CLA 250+ electric AMG Line",
+    fit: ["commute", "design"]
+  },
+  {
+    id: "glb-electric",
+    name: "GLB electric",
+    category: "electric",
+    shape: "ev-suv",
+    image: "assets/images/glb-electric.jpg",
+    badge: "신규 출시 · 27년식",
+    tier: 1,
+    seats: 5,
+    ev: true,
+    tagline: "넉넉한 공간의 다재다능한 전기 SUV, The all-new electric GLB.",
+    forWho: "첫 전기 SUV를 찾는 분, 공간을 중시하는 젊은 가족",
+    drive: "전기차 특유의 조용한 주행과 SUV다운 높은 시야.",
+    space: "넉넉한 실내에 더해 보닛 아래 127리터 전면 트렁크(최대 20kg)가 있습니다.",
+    consider: "주 충전 장소와 하루 주행 거리를 먼저 확인하세요. 내연기관 GLB와 실물 비교를 권합니다.",
+    news: [
+      "800V 급속 충전 · 10%→80% 약 22분 (최대 320kW)",
+      "보닛 아래 127리터 전면 트렁크",
+      "새 운영체제 MB.OS",
+      "동승석 14인치 화면의 MBUX 슈퍼스크린",
+      "센터 에어백 · 무릎 에어백"
+    ],
+    lineup: "GLB 250+ electric",
+    fit: ["family", "commute", "space"]
+  },
+  {
+    id: "glc-electric",
+    name: "GLC electric",
+    category: "electric",
+    shape: "ev-suv",
+    image: "assets/images/glc-electric.jpg",
+    badge: "신규 출시 · 27년식",
+    tier: 2,
+    seats: 5,
+    ev: true,
+    tagline: "GLC 그대로, 이제 전기로. The all-new electric GLC.",
+    forWho: "SUV를 전기차로 바꾸려는 분, 3~4인 가족",
+    drive: "어질리티 & 컴포트 패키지의 에어매틱 · 리어 액슬 스티어링으로 편안하고 민첩한 주행.",
+    space: "더 여유로워진 실내와 보닛 아래 전면 트렁크.",
+    consider: "주 충전 장소와 하루 주행 거리를 먼저 확인하세요. 현재 런치 에디션으로 판매됩니다.",
+    news: [
+      "39.1인치 화면이 이어진 MBUX 하이퍼스크린",
+      "800V 급속 충전 · 10%→80% 약 22분 (최대 320kW)",
+      "투명도를 바꾸는 SKY CONTROL 파노라믹 루프",
+      "아이코닉 일루미네이티드 라디에이터 그릴",
+      "부메스터 4D 서라운드 사운드 (스피커 19개)"
+    ],
+    lineup: "GLC 300 4MATIC electric AMG Line · AMG Line+ (런치 에디션)",
+    fit: ["family", "commute", "comfort", "design"]
   },
   {
     id: "eqe",
