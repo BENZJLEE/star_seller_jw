@@ -19,11 +19,11 @@
    ========================================================================== */
 
 window.FINANCE = {
-  month: "2026년 11월",
+  month: "2026년 11~12월",
   basis: "60개월 · 선수금 30% 기준",
 
   points: [
-    { big: "0%", title: "무이자 할부", desc: "24개월(일부 차종은 36개월도 가능) 무이자 할부. 선수금은 차량가의 65%, E 200은 75%입니다.", sub: "C 200 · E 200 · E 300 · S 450 · GLB · GLC · GLE · GLS · G 63 · EQE · EQS 등" },
+    { big: "0%", title: "무이자 할부", desc: "24개월(일부 차종은 36개월도 가능) 무이자 할부. 선수금은 차량가의 65%, E 200은 75%입니다.", sub: "C 200 · E 200 · E 300(MY27 포함) · S 450 · GLB · GLC · GLE · GLS · G 63 · EQE · EQS 등" },
     { big: "3.86%", title: "저금리 할부", desc: "GLE 450 4MATIC · Coupé는 연 3.86%. GLS · AMG 주요 모델 4.26%, GLB 250 5.26%, C 200 5.33%, E 200 5.80%대.", sub: "60개월 · 선수금 30% 기준" },
     { big: "4.80%", title: "잔가보장형 할부 MB-SURE", desc: "만기 때 차량 가치를 미리 보장받아 월 납입금을 낮추는 할부입니다. GLE 450 연 4.80%부터.", sub: "60개월 · 선수금 30% 기준" },
     { big: "+5%", title: "금융 이용 시 추가 할인", desc: "벤츠파이낸셜을 이용하면 차량 할인에 더해지는 추가 할인. E 200 EXCLUSIVE(26년식) +5%, 주요 모델 +4%.", sub: "모델 · 연식에 따라 +1~5%" },
@@ -52,8 +52,8 @@ window.FINANCE = {
       { my: "MY26", name: "E 200 AMG Line", star: true, add: "+4%", rate: 5.88, sure: 5.66, free: "24개월 · 선수금 75%" },
       { my: "MY26", name: "E 300 4MATIC EXCLUSIVE", star: true, add: "+4%", rate: 5.33, sure: 5.72, free: "24개월 · 선수금 65%" },
       { my: "MY26", name: "E 300 4MATIC AMG Line", star: true, add: "+4%", rate: 5.33, sure: 5.72, free: "24개월 · 선수금 65%" },
-      { my: "MY27", name: "E 300 4MATIC EXCLUSIVE", add: "+4%", rate: 6.60, sure: 6.41, free: "" },
-      { my: "MY27", name: "E 300 4MATIC AMG Line", add: "+4%", rate: 6.60, sure: 6.41, free: "" },
+      { my: "MY27", name: "E 300 4MATIC EXCLUSIVE", star: true, add: "+4%", rate: 0, sure: 0, free: "24개월 · 선수금 64%", lease: true },
+      { my: "MY27", name: "E 300 4MATIC AMG Line", star: true, add: "+4%", rate: 0, sure: 0, free: "24개월 · 선수금 64%", lease: true },
       { my: "MY26", name: "Mercedes-AMG E 53 HYBRID 4MATIC+", add: "", rate: 4.26, sure: 5.02, free: "24 · 36개월 · 선수금 65%", lease: true }
     ] },
     { cls: "S-Class", rows: [

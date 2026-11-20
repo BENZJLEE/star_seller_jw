@@ -226,6 +226,30 @@ ul, ol { list-style: none; }
 .deal .btn { margin-top: auto; }
 .deal__tag + .btn, .deal__rate + .btn { margin-top: 22px; }
 
+/* special stock */
+.specials { background: var(--black); color: var(--white); }
+.specials .section__desc { color: rgba(255,255,255,.7); }
+.deals__all--light { border-bottom-color: var(--white); color: var(--white); }
+.note--light { color: rgba(255,255,255,.5); }
+.deal--special { background: var(--charcoal); border-color: var(--line-dark); color: var(--white); }
+.deal--special:hover { border-color: var(--silver); box-shadow: none; }
+.deal--special .deal__photo { background: var(--charcoal-2); }
+.deal--special .deal__my { color: var(--silver); border-color: var(--line-dark); }
+.deal__badge--gold { background: #b8955a; }
+.deal--special .deal__off { color: var(--white); }
+.deal__was { margin-top: 4px; font-size: 14px; color: var(--silver); }
+.deal__was s { color: rgba(255,255,255,.45); }
+.deal--special .deal__rate { color: rgba(255,255,255,.8); }
+.deal--special .deal__rate span { color: rgba(255,255,255,.5); }
+.quote { margin-top: 18px; border: 1px solid var(--line-dark); padding: 6px 16px; font-size: 14px; }
+.quote > div { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line-dark); }
+.quote > div:last-child { border-bottom: 0; }
+.quote dt { color: rgba(255,255,255,.6); }
+.quote__head dt { color: var(--white); font-weight: 500; }
+.quote__head dd { color: #d8b77c; font-weight: 700; }
+.quote__main dd { font-size: 18px; font-weight: 700; color: #d8b77c; }
+.deal--special .quote + .btn { margin-top: 22px; }
+
 /* purchase extras */
 .promo__extras { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 32px; margin: 8px 0 28px; }
 .promo__extras li { padding: 14px 0; border-bottom: 1px solid var(--line-dark); font-size: 14px; }
@@ -574,3 +598,22 @@ ul, ol { list-style: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* 메뉴 '한정 특가' 강조 */
+.nav a.nav__hot { color: #d8b77c; font-weight: 600; }
+
+/* hero: 한정 특가 타일 */
+.hd-tile--special { border-color: rgba(216,183,124,.7); }
+.hd-tile--special:hover { border-color: #d8b77c; }
+.hd-tile--special b { color: #f3dcae; }
+.hd-tile__new--gold { background: #d8b77c; }
+@media (max-width: 860px) { .hd-tile--special { grid-column: 1 / -1; } }
+@media (min-width: 861px) {
+  .hd__side { gap: 12px; }
+  .hd__side .hd-tile__img { aspect-ratio: 16 / 4.4; }
+  .hd__side .hd-tile__txt { padding: 10px 16px 13px; }
+}
+.quote__total { background: rgba(216,183,124,.08); margin: 0 -16px; padding: 10px 16px !important; }
+.quote__total dt { color: #fff !important; font-weight: 500; }
+.quote__total dt small { display: block; font-size: 11px; font-weight: 400; color: rgba(255,255,255,.5); }
+.quote__total dd { font-size: 17px; font-weight: 700; color: #fff; align-self: center; }

@@ -606,6 +606,68 @@
   }
 
   /* ------------------------------------------------------------------
+     7-1-1. 한정 특가 재고
+     ------------------------------------------------------------------ */
+  function initSpecials() {
+    var PK = window.PriceKit;
+    if (!PK || !PK.specials) return;
+    var list = PK.specials();
+    if (!list.length) return;
+    $("#specials").hidden = false;
+
+    // 첫 화면 오른쪽 타일: 가장 싼 특가 + 무이자 견적 요약
+    var tile = $("#hdSpecial");
+    if (tile) {
+      var low = list.slice().sort(function (a, b) { return a.final - b.final; })[0];
+      var withQ = list.filter(function (s) { return s.item.quote; })
+        .sort(function (a, b) { return a.item.quote.monthly - b.item.quote.monthly; })[0];   // 월 납입금이 가장 낮은 견적
+      var names = [];
+      list.forEach(function (s) { var n = s.item.name.split(" ").slice(0, 2).join(" "); if (names.indexOf(n) < 0) names.push(n); });
+      $("#hdSpecialTitle").textContent = withQ
+        ? names.join(" · ") + " " + withQ.item.quote.months + "개월 무이자 →"
+        : names.join(" · ") + " 특가 " + PK.won(low.final) + "부터 →";
+      $("#hdSpecialSub").textContent = withQ
+        ? "특가 " + PK.won(low.final) + "부터 · 월 " + Math.floor(withQ.item.quote.monthly / 10000) + "만원대부터"
+        : "보유 재고 한정 특별 조건";
+      tile.hidden = false;
+    }
+    $("#specialsNote").textContent = "※ " + PK.data.period + " · 보유 재고 한정 · 권장소비자가격(" + PK.data.priceListDate +
+      " 가격표) 기준. 벤츠파이낸셜 할인 · 무이자 할부는 해당 금융 상품 이용 시 적용되며 금융 심사 결과에 따라 달라질 수 있습니다. 등록비용은 경기도 등록 기준(취득세 · 공채 · 부대비용)이며 지역 · 조건에 따라 달라집니다. 견적서가 없는 차종의 등록비용은 추정치입니다.";
+    $("#specialTrack").innerHTML = list.map(function (s) {
+      var sp = s.item, q = sp.quote;
+      var gm = sp.guide && findModel(sp.guide);
+      return '<article class="deal deal--special">' +
+        (gm && gm.image ? '<div class="deal__photo"><img src="' + esc(gm.image) + '" alt="' + esc(gm.name) + '" loading="lazy" width="1200" height="675"></div>' : "") +
+        '<div class="deal__top"><span class="deal__my">' + esc(sp.my) + '</span><span class="deal__badge deal__badge--gold">한정 특가</span></div>' +
+        '<h3 class="deal__name">' + esc(sp.name) + "</h3>" +
+        '<p class="deal__off">' + PK.won(s.final) + "</p>" +
+        '<p class="deal__was"><s>' + PK.won(s.msrp) + "</s> · " + PK.won(s.discount) + " 할인 (" + sp.rate + "%)</p>" +
+        '<p class="deal__rate">' + esc(sp.rateText) + "<span>벤츠파이낸셜 이용 시</span></p>" +
+        (q ? '<dl class="quote">' +
+          '<div class="quote__head"><dt>견적 예시</dt><dd>' + q.months + "개월 " + (q.apr ? q.apr + "%" : "무이자") + "</dd></div>" +
+          "<div><dt>선수금 (" + q.downRate + "%)</dt><dd>" + PK.won(q.down) + "</dd></div>" +
+          "<div><dt>등록비용</dt><dd>" + PK.won(s.reg) + "</dd></div>" +
+          '<div class="quote__total"><dt>초기 비용 <small>선수금 + 등록비</small></dt><dd>' + PK.won(s.upfront) + "</dd></div>" +
+          '<div class="quote__main"><dt>월 납입금</dt><dd>' + q.monthly.toLocaleString("ko-KR") + "원</dd></div>" +
+          "</dl>"
+        : '<dl class="quote">' +
+          '<div class="quote__head"><dt>현금 구매 시</dt><dd>경기 등록 기준</dd></div>' +
+          "<div><dt>특가</dt><dd>" + PK.won(s.final) + "</dd></div>" +
+          "<div><dt>등록비용 (약)</dt><dd>" + PK.won(s.reg) + "</dd></div>" +
+          '<div class="quote__total"><dt>총 구매 비용 <small>차량가 + 등록비</small></dt><dd>약 ' + PK.won(s.upfront) + "</dd></div>" +
+          "</dl>") +
+        '<button type="button" class="btn btn--light btn--block" data-special="' + esc(s.key) + '">이 특가로 상담하기</button>' +
+        "</article>";
+    }).join("");
+    $("#specialTrack").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-special]");
+      if (!b) return;
+      var s = PK.findSpecial(b.getAttribute("data-special"));
+      if (s) goContact({ modelId: s.item.guide, message: PK.specialMessage(s) });
+    });
+  }
+
+  /* ------------------------------------------------------------------
      7-2. 제휴 법인 검색
      ------------------------------------------------------------------ */
   var ABBR = [["엔에이치엔", "nhn"], ["에이치디씨", "hdc"], ["비엔케이", "bnk"], ["에스케이", "sk"], ["씨제이", "cj"], ["지에스", "gs"], ["케이티", "kt"],
@@ -686,6 +748,7 @@
   initFinder();
   initForm();
   initDeals();
+  initSpecials();
   initMou();
   initFaq();
   initReveal();

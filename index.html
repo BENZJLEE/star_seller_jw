@@ -36,8 +36,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261118b">
-  <link rel="stylesheet" href="css/star.css?v=20261118b">
+  <link rel="stylesheet" href="css/style.css?v=20261121">
+  <link rel="stylesheet" href="css/star.css?v=20261121">
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -50,6 +50,7 @@
       <span class="logo__line logo__line--ko">벤츠 공식딜러 이진우</span>
     </a>
     <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="#specials" class="nav__hot">한정 특가</a>
       <a href="#deals">이달의 조건</a>
       <a href="price.html">가격표</a>
       <a href="#mou">MOU</a>
@@ -90,7 +91,7 @@
       <div class="hd__acts">
         <div class="hd__dots" id="hdDots" role="tablist" aria-label="이달의 조건 차종"></div>
         <button type="button" class="btn hd__quote" id="hdQuote">이 조건으로 견적 받기 <span aria-hidden="true">→</span></button>
-        <a href="#deals" class="hd__all">11월 조건 전체 보기 <span aria-hidden="true">→</span></a>
+        <a href="#deals" class="hd__all">이달의 조건 전체 보기 <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="hd__who">
@@ -102,6 +103,10 @@
     </div>
 
     <div class="hd__side">
+      <a class="hd-tile hd-tile--special" href="#specials" id="hdSpecial" hidden>
+        <span class="hd-tile__img" style="background-image:url(assets/images/e-class.jpg)"><i class="hd-tile__new hd-tile__new--gold">한정 특가</i></span>
+        <span class="hd-tile__txt"><small>SPECIAL STOCK · 한정 수량</small><b id="hdSpecialTitle">한정 특가 재고 →</b><em id="hdSpecialSub">보유 재고 한정 특별 조건</em></span>
+      </a>
       <a class="hd-tile" href="#models">
         <span class="hd-tile__img" style="background-image:url(assets/images/gle-new.jpg)"><i class="hd-tile__new">NEW</i></span>
         <span class="hd-tile__txt"><small>27년식 신형 출시</small><b>The new GLE · GLS →</b><em>신형에서 달라진 점 보기</em></span>
@@ -111,6 +116,22 @@
         <span class="hd-tile__txt"><small>CORPORATE BENEFIT</small><b>우리 회사, 벤츠 제휴사일까? →</b><em>회사명으로 추가 혜택 확인</em></span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ================= 한정 특가 재고 (js/pricing.js specials) — 첫 화면 바로 아래 ================= -->
+<section class="section specials" id="specials" hidden>
+  <div class="container">
+    <div class="deals__head">
+      <div>
+        <p class="eyebrow eyebrow--light">SPECIAL STOCK · 한정 수량</p>
+        <h2 class="section__title">한정 특가 재고 · 24개월 무이자</h2>
+        <p class="section__desc">특가 할인에 24개월 무이자 할부까지 받을 수 있는 보유 재고입니다. 재고 소진 시 조기 종료됩니다.</p>
+      </div>
+      <a href="#contact" class="deals__all deals__all--light">재고 문의하기 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="deal-track" id="specialTrack"></div>
+    <p class="note note--light" id="specialsNote"></p>
   </div>
 </section>
 
@@ -566,20 +587,37 @@
   <a href="#contact" class="quickbar__main">상담 신청</a>
 </nav>
 
-<script src="js/config.js?v=20261118b"></script>
-<script src="js/models.js?v=20261118b"></script>
-<script src="js/pricing.js?v=20261118b"></script>
-<script src="js/prices.js?v=20261118b"></script>
-<script src="js/finance.js?v=20261118b"></script>
-<script src="js/mou.js?v=20261118b"></script>
-<script src="js/main.js?v=20261118b"></script>
+<script src="js/config.js?v=20261121"></script>
+<script src="js/models.js?v=20261121"></script>
+<script src="js/pricing.js?v=20261121"></script>
+<script src="js/prices.js?v=20261121"></script>
+<script src="js/finance.js?v=20261121"></script>
+<script src="js/mou.js?v=20261121"></script>
+<script src="js/main.js?v=20261121"></script>
 <script>
 /* 메인 화면 '이달의 별' — 가격표 데이터(js/pricing.js)를 그대로 읽어 자동으로 바뀝니다 */
 (function () {
   var K = window.PriceKit, $ = function (id) { return document.getElementById(id); };
   if (!K || !$("hdSwap")) return;
-  var list = K.featured().filter(function (c) { return c.hasDiscount; });
+  // 한정 특가 재고가 있으면 그 차종만 돌아가며 보여주고, 없으면 '이달의 조건' 차종을 보여줍니다
+  var specials = K.specials ? K.specials() : [];
+  var isSpecial = specials.length > 0;
+  var list = isSpecial
+    ? specials.map(function (s) {
+        var sp = s.item, q = sp.quote;
+        return { key: s.key, msrp: s.msrp, final: s.final, discount: s.discount, special: true,
+          item: { my: sp.my, name: sp.name, guide: sp.guide, rateText: sp.rateText,
+            free: q ? q.months + "개월 " + (q.apr ? q.apr + "%" : "무이자") : "", down: q ? q.downRate : 0 } };
+      })
+    : K.featured().filter(function (c) { return c.hasDiscount; });
   if (!list.length) return;
+  if (isSpecial) {
+    var tag = document.querySelector("#hdSwap .hd__tag");
+    if (tag) tag.innerHTML = '<i class="spark" aria-hidden="true"></i>이달의 별';
+    var all = document.querySelector(".hd__all");
+    if (all) { all.setAttribute("href", "#specials"); all.innerHTML = '한정 특가 재고 전체 보기 <span aria-hidden="true">→</span>'; }
+    $("hdDots").setAttribute("aria-label", "한정 특가 차종");
+  }
   var i = 0, timer, swap = $("hdSwap"), dots = $("hdDots"), front = true;
   var month = K.data.month || "", m = month.replace(/^\d+년\s*/, "");
   $("hdMonth").textContent = month; $("hdMonth2").textContent = m;
@@ -598,13 +636,14 @@
   }
   function paint() {
     var c = list[i], it = c.item;
-    $("hdRate").textContent = K.rateText(it);
+    $("hdRate").textContent = c.special ? it.rateText : K.rateText(it);
     $("hdName").textContent = it.name;
     $("hdOff").textContent = K.won(c.discount);
     $("hdMsrp").textContent = K.won(c.msrp);
     $("hdFinal").textContent = K.won(c.final);
     $("hdFreeBox").hidden = !it.free; $("hdFree").textContent = it.free || "";
-    $("hdDown").textContent = K.down(it) ? "선수금 " + K.down(it) + "%" : "";
+    var dn = c.special ? it.down : K.down(it);
+    $("hdDown").textContent = dn ? "선수금 " + dn + "%" : "";
     [].forEach.call(dots.children, function (d, n) { d.setAttribute("aria-selected", n === i ? "true" : "false"); });
     bg(c);
   }
@@ -619,7 +658,8 @@
   }
   $("hdQuote").addEventListener("click", function () {
     var key = list[i].key, btn = null;
-    [].forEach.call(document.querySelectorAll("#deals [data-quote]"), function (b) { if (b.getAttribute("data-quote") === key) btn = b; });
+    var sel = list[i].special ? "#specials [data-special]" : "#deals [data-quote]", attr = list[i].special ? "data-special" : "data-quote";
+    [].forEach.call(document.querySelectorAll(sel), function (b) { if (b.getAttribute(attr) === key) btn = b; });
     if (btn) btn.click(); else location.hash = "#contact";
   });
   paint(); start();
