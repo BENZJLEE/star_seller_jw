@@ -56,7 +56,7 @@
     var PK = window.PriceKit;
     if (PK && PK.data.items.length) {
       box.innerHTML = '<p class="promo__label">' + esc(PK.data.month) + " PROMOTION</p>" +
-        '<ul class="promo__extras">' + (PK.data.extras || []).map(function (x) {
+        '<ul class="promo__extras">' + (PK.data.extras || []).filter(function (x) { return !x.until || Date.now() <= new Date(x.until + "T23:59:59+09:00").getTime(); }).map(function (x) {
           return "<li><b>" + esc(x.title) + "</b><span>" + esc(x.desc) + "</span></li>";
         }).join("") + "</ul>" +
         '<a href="price.html" class="btn btn--light">' + esc(PK.data.month) + " 전체 차종 가격표 보기</a>";
